@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>makeCENTS · Home economics for the Universal Family Office</title>
+<meta name="description" content="makeCENTS by Lorraen Madre: three Kings (Cash, Credit and Crypto) run through the 12 Houses of your home economy. A simple way to learn every stream of money your family has.">
+<meta property="og:title" content="makeCENTS · Make it make cents">
+<meta property="og:description" content="Home economics for the Universal Family Office. Cash, Credit and Crypto across the 12 Houses of your home.">
+<meta property="og:image" content="https://makecents.lorraenmadre.com/media/intro.jpg">
+<meta name="theme-color" content="#04060c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d2ab3a' d='M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.9 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z'/%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Belleza&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: Lorraen Madre header, full-frame orb video, the makeCENTS story (Three Kings), then five tabs.
+   Cash, Credit and Crypto share one board: 12 House lines ring a center Bull 13 line. Glass terminal boxes with gold edges over drifting blue light. */
+:root{
+  --bg:#04060c; --pane:rgba(12,17,32,.66); --pane-2:rgba(22,30,54,.72); --pane-3:rgba(36,46,78,.8);
+  --g:#5af78e; --ink:#f4f6fb; --g2:#dfe5f0; --g3:#9aa6bf;
+  --line:rgba(150,180,255,.16); --line-2:rgba(150,180,255,.08);
+  --goldline:rgba(210,171,58,.45); --gold:#d2ab3a; --gold-ink:#2a2008;
+  --silver:#cfd6e0; --copper:#cd763e;
+  --red:#c4382e; --blue:#2a56a6; --pill-ink:#fff;
+  --burn:#ff7b6e;
+  --sans:"Geist",-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;
+  --brand:"Belleza","Optima","Gill Sans",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--bg)}
+body{color:var(--g2);font-family:var(--sans);font-size:15px;line-height:1.55;padding-inline:16px;padding-block:0;min-height:100%}
+.aura{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:radial-gradient(120% 80% at 50% 0%,#0b1430 0%,#04060c 60%)}
+.aura i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.7;mix-blend-mode:screen}
+.aura i:nth-child(1){width:60vmax;height:60vmax;left:-15vmax;top:-20vmax;background:radial-gradient(circle,#2f6bff 0%,rgba(47,107,255,0) 65%);animation:d1 26s ease-in-out infinite alternate}
+.aura i:nth-child(2){width:55vmax;height:55vmax;right:-20vmax;top:10vmax;background:radial-gradient(circle,#1fb6ff 0%,rgba(31,182,255,0) 65%);animation:d2 32s ease-in-out infinite alternate;opacity:.45}
+.aura i:nth-child(3){width:45vmax;height:45vmax;left:20vmax;bottom:-25vmax;background:radial-gradient(circle,#6d4dff 0%,rgba(109,77,255,0) 65%);animation:d3 38s ease-in-out infinite alternate;opacity:.4}
+@keyframes d1{to{transform:translate(18vmax,12vmax) scale(1.15)}} @keyframes d2{to{transform:translate(-22vmax,-8vmax) scale(.9)}} @keyframes d3{to{transform:translate(-14vmax,-18vmax) scale(1.2)}}
+.app{max-width:1100px;margin:0 auto;padding-block:0 48px;display:grid;gap:18px}
+h1,h2,h3{font-family:var(--sans);font-weight:600;color:var(--g);margin:0;text-wrap:balance;letter-spacing:-.015em}
+h2{font-size:1.5rem} h3{font-size:1.05rem}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.num,.lbl,.meta,.tab,.bar,label,.tick,.li .a{font-family:var(--mono)}
+.num{font-variant-numeric:tabular-nums}
+.meta{color:var(--g3);font-size:.78rem}
+.lbl{color:var(--g3);font-size:.7rem;text-transform:uppercase;letter-spacing:.14em}
+.big{font-family:var(--mono);font-size:2.2rem;line-height:1.05;color:var(--ink);letter-spacing:-.02em}
+.up{color:var(--g)} .dn{color:var(--burn)}
+
+/* ---- Lorraen Madre sitewide header ---- */
+.lm{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;margin-inline:-16px;padding:12px 16px;background:rgba(4,6,12,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-2)}
+.lm-in{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.wm{font-family:var(--brand);font-size:1.15rem;letter-spacing:.24em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.wm svg{width:16px;height:16px;color:var(--gold)}
+.doors{display:flex;gap:8px;flex-wrap:wrap}
+.door{font-family:var(--sans);font-weight:700;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:.5rem 1rem;text-decoration:none;transition:transform .2s;border:1px solid transparent}
+.door:hover{transform:translateY(-2px)}
+@media (max-width:520px){.lm-in{flex-wrap:nowrap}.wm{font-size:.82rem;letter-spacing:.16em;gap:6px}.doors{gap:5px;flex-wrap:nowrap}.door{padding:.4rem .6rem;font-size:.6rem;letter-spacing:.08em}}
+.door.design{color:#fff;border-color:#fff;background:transparent}
+.door.work{background:var(--blue);color:#fff}
+.door.play{background:var(--red);color:#fff}
+
+/* ---- hero: whole video, then the story ---- */
+.hero-vid{position:relative;aspect-ratio:16/9;width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--goldline);background:#000 url(media/intro.jpg) center/contain no-repeat;margin-top:18px}
+.hero-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.story{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:end;padding-block:8px}
+@media (max-width:820px){.story{grid-template-columns:1fr}}
+.brand{font-family:var(--sans);font-weight:700;font-size:clamp(2.8rem,8vw,5rem);line-height:.95;letter-spacing:-.04em;color:var(--ink)}
+.brand b{color:var(--g);font-weight:700;letter-spacing:-.01em}
+.tagline{font-size:clamp(1.3rem,3vw,1.8rem);color:var(--ink);font-weight:500;margin-top:10px}
+.sub{color:var(--g);font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-top:8px}
+.kings3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.kings3{grid-template-columns:1fr}}
+.k3c{border:1px solid var(--goldline);border-radius:12px;background:var(--pane);backdrop-filter:blur(12px);padding:12px 14px;display:grid;gap:4px;text-align:left;color:inherit}
+.k3c:hover{background:var(--pane-2)}
+.k3c .kn{display:flex;gap:8px;align-items:center;color:var(--ink);font-weight:600}
+.k3c .dot{width:12px;height:12px;border-radius:50%}
+.k3c p{font-size:.84rem;color:var(--g2)}
+.k3note{grid-column:1/-1;font-size:.86rem;color:var(--g3)}
+
+/* ---- the matrix: 12 Houses x 3 Kings ---- */
+.mx{width:100%;border-collapse:separate;border-spacing:0 4px;min-width:600px}
+.mx th{font-family:var(--mono);font-weight:500;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;text-align:left;padding:4px 10px;color:var(--g3)}
+.mx th.kc{color:var(--gold)} .mx th.kr{color:var(--silver)} .mx th.kx{color:var(--copper)}
+.mx th small{display:block;color:var(--g3);letter-spacing:.06em;text-transform:none;font-size:.7rem}
+.mx td{padding:0}
+.mx th:first-child,.mx .hcell{position:sticky;left:0;z-index:1;background:#080c18}
+@media (max-width:640px){.mx{min-width:0;width:560px;table-layout:fixed}.mx th:first-child{width:92px}.mx td.hcell{white-space:normal;font-size:.76rem;line-height:1.25;overflow-wrap:anywhere;padding:6px 8px}.mx .hcell span{display:block}.mx .s{max-width:13ch}.mx button.c{padding:6px 8px;gap:6px}}
+.mx .hcell{padding:8px 10px;font-size:.86rem;color:var(--ink);white-space:nowrap}
+.mx .hcell span{font-family:var(--mono);color:var(--g3);font-size:.7rem;margin-right:8px}
+.mx button.c{display:flex;align-items:center;gap:8px;width:100%;text-align:left;background:var(--pane);border:1px solid rgba(210,171,58,.35);border-radius:8px;padding:7px 10px;color:inherit;min-height:46px}
+.mx button.c:hover{border-color:var(--gold);background:var(--pane-2)}
+.mx button.c .bull{width:16px;height:16px}
+.mx .v{font-family:var(--mono);color:var(--ink);font-size:.9rem;display:block;line-height:1.2}
+.mx .s{font-size:.72rem;color:var(--g3);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:20ch}
+.mx tr.tot td{border-top:1px solid var(--gold)}
+.mx tr.tot .hcell{color:var(--g)}
+.mx tr.tot button.c{border-color:var(--gold);background:rgba(4,8,18,.8)}
+.house.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,60%{box-shadow:0 0 0 2px var(--gold),0 0 24px rgba(210,171,58,.6)}100%{box-shadow:none}}
+
+/* ---- status + tabs ---- */
+.status{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--pane);backdrop-filter:blur(14px)}
+.prompt{color:var(--g);font-family:var(--mono);font-weight:500}
+.fam{background:transparent;border:0;border-bottom:1px dashed var(--line);color:var(--ink);font:inherit;padding:2px 0;width:16ch}
+.stat{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:.86rem}
+.stat b{color:var(--ink);font-weight:500}
+.demo{color:var(--g3);font-family:var(--mono);font-size:.7rem;border:1px solid var(--line);padding:2px 8px;border-radius:4px}
+.tabs{display:flex;border:1px solid var(--line);background:var(--pane);border-radius:10px;overflow-x:auto;backdrop-filter:blur(14px);position:sticky;top:calc(env(safe-area-inset-top,0px) + 62px);z-index:20}
+.tab{background:none;border:0;border-right:1px solid var(--line-2);color:var(--g3);padding:11px 16px;white-space:nowrap;font-size:.8rem;letter-spacing:.06em}
+.tab .k{opacity:.7;margin-right:6px}
+.tab[aria-selected="true"]{background:rgba(90,247,142,.08);color:var(--g);box-shadow:inset 0 -2px 0 var(--g)}
+.view{display:grid;gap:16px}
+.intro{display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;align-items:end}
+.intro p{max-width:60ch}
+
+/* ---- panes ---- */
+.pane{border:1px solid var(--goldline);background:var(--pane);border-radius:12px;min-width:0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden}
+.pane > .bar{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line-2);padding:7px 14px;color:var(--g3);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
+.pane > .bar b{color:var(--g);font-weight:500}
+.pane > .body{padding:12px 14px;display:grid;gap:12px}
+.pair{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pill{border:0;border-radius:999px;padding:.6rem 1.15rem;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--pill-ink);transition:transform .2s;text-decoration:none;display:inline-block}
+.pill:hover{transform:translateY(-1px)}
+.pill.red{background:var(--red)} .pill.blue{background:var(--blue)}
+.pill.ghost{background:none;border:1px solid var(--line);color:var(--g2)}
+.pill.sm{padding:.35rem .8rem;font-size:.68rem}
+.pill:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
+.field{display:grid;gap:4px;min-width:0;flex:1 1 150px}
+label{color:var(--g3);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+input,select{background:rgba(4,6,12,.6);border:1px solid var(--line);border-radius:6px;color:var(--ink);padding:8px 10px;font:inherit;width:100%}
+.msg{font-size:.86rem;min-height:1.3em}
+.msg.ok{color:var(--g)} .msg.err{color:var(--burn)}
+.list{display:grid}
+.li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line-2);font-size:.88rem}
+.li:last-child{border-bottom:0}
+.li .a{white-space:nowrap;text-align:right}
+.empty{color:var(--g3);font-size:.86rem}
+.track{height:6px;background:var(--pane-3);border-radius:99px;overflow:hidden}
+.fill{height:100%;background:var(--g);border-radius:99px}
+.scroll{overflow-x:auto}
+.fine{font-size:.72rem;color:var(--g3);max-width:90ch}
+
+/* ---- the shared 12-House board ---- */
+.board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.house{background:var(--pane);border:1px solid rgba(210,171,58,.5);border-radius:10px;backdrop-filter:blur(12px);padding:10px 12px;display:grid;gap:1px;align-content:start;text-align:left;color:inherit;min-width:0;min-height:120px}
+.house:hover{background:var(--pane-2);border-color:var(--gold)}
+.house .hn{display:flex;justify-content:space-between;align-items:center;color:var(--g3);font-family:var(--mono);font-size:.66rem;letter-spacing:.12em}
+.house .ty{color:var(--ink);font-weight:600;font-size:.88rem;overflow-wrap:anywhere}
+.house .sub2{color:var(--g3);font-size:.76rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.house .bal{font-family:var(--mono);font-size:1.35rem;line-height:1.15;color:var(--ink);margin-top:4px}
+.house .ln{font-family:var(--mono);font-size:.7rem}
+.house .ln.burn{color:var(--burn)} .house .ln.in{color:var(--g)} .house .ln.alw{color:var(--g3)}
+.house .track{margin-top:4px}
+.p1{grid-area:1/1}.p2{grid-area:1/2}.p3{grid-area:1/3}.p4{grid-area:1/4}.p5{grid-area:2/4}.p6{grid-area:3/4}
+.p7{grid-area:4/4}.p8{grid-area:4/3}.p9{grid-area:4/2}.p10{grid-area:4/1}.p11{grid-area:3/1}.p12{grid-area:2/1}
+.core{grid-area:2/2/4/4;border:1px solid var(--gold);box-shadow:0 0 40px -12px rgba(210,171,58,.4);background:rgba(4,8,18,.78);border-radius:12px;padding:12px 14px;display:grid;gap:8px;align-content:start;min-width:0}
+.core .k3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.core .k3 b{display:block;font-family:var(--mono);font-weight:500;font-size:1.15rem;line-height:1.2;color:var(--ink)}
+.core .k3 b.dn{color:var(--burn)} .core .k3 b.up{color:var(--g)}
+.core svg{width:100%;height:auto;display:block}
+@media (max-width:720px){.board{grid-template-columns:repeat(2,minmax(0,1fr))}.board>*{grid-area:auto!important}.core{grid-column:1/-1!important;order:-1}}
+.bull{width:20px;height:20px;display:block;flex:none}
+.bull.ok{color:#5af78e;filter:drop-shadow(0 0 4px rgba(90,247,142,.5))}
+.bull.bad{color:#ff6b5e;filter:drop-shadow(0 0 4px rgba(255,107,94,.5))}
+.bull.none{color:#4b5670}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.78rem;color:var(--g3);align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.legend .bull{width:15px;height:15px}
+
+/* ---- Kings: voice boxes ---- */
+.king{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;padding:14px 16px}
+@media (max-width:640px){.king{grid-template-columns:1fr}}
+.orb{--glow:rgba(227,184,74,.65);width:96px;height:96px;border-radius:50%;position:relative;box-shadow:0 0 34px 2px var(--glow),0 0 0 1px var(--glow)}
+.orb video{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;clip-path:circle(48%);transform:scale(1.06)}
+.orb.gold video{filter:sepia(1) saturate(2.6) hue-rotate(-6deg) brightness(1.08)}
+.orb.silver{--glow:rgba(214,222,236,.55)} .orb.silver video{filter:grayscale(1) brightness(1.18) contrast(1.15)}
+.orb.copper{--glow:rgba(205,118,62,.65)} .orb.copper video{filter:sepia(1) saturate(3.4) hue-rotate(-28deg) brightness(.92)}
+.orb::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1px solid var(--glow);opacity:0}
+.orb.busy::after{animation:ring 1.4s ease-out infinite}
+.orb.speaking{animation:pulse .9s ease-in-out infinite alternate}
+.orb .crown{position:absolute;right:-4px;bottom:-4px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#0b0f1c;border:1px solid var(--glow);color:#fff;font-size:.9rem}
+@keyframes ring{from{opacity:.9;transform:scale(.95)}to{opacity:0;transform:scale(1.35)}}
+@keyframes pulse{from{box-shadow:0 0 28px 0 var(--glow);transform:scale(1)}to{box-shadow:0 0 64px 10px var(--glow);transform:scale(1.05)}}
+@media (max-width:640px){.orb{width:72px;height:72px}}
+.kchat{display:grid;gap:10px;min-width:0}
+.kmsgs{display:grid;gap:8px;max-height:240px;overflow-y:auto;padding-right:4px}
+.kb{max-width:85%;padding:8px 12px;border-radius:12px;font-size:.92rem;line-height:1.45;white-space:pre-wrap}
+.kb.k{background:rgba(47,107,255,.14);border:1px solid rgba(143,177,255,.25);color:var(--ink);justify-self:start;border-bottom-left-radius:4px}
+.kb.u{background:rgba(255,255,255,.07);border:1px solid var(--line);color:var(--g2);justify-self:end;border-bottom-right-radius:4px}
+.kin{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.kin input{flex:1 1 220px;width:auto;border-radius:999px;padding:9px 14px}
+.ksugg{display:flex;gap:6px;flex-wrap:wrap}
+.ksugg button{background:none;border:1px solid var(--line);color:var(--g3);border-radius:999px;padding:3px 10px;font-size:.78rem}
+.ksugg button:hover{color:var(--ink);border-color:rgba(143,177,255,.5)}
+.knote{font-size:.72rem;color:var(--g3)}
+
+/* ---- credit ---- */
+.credit-top{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:760px){.credit-top{grid-template-columns:1fr}}
+.stage{position:relative;padding:26px 22px;border-radius:12px;background:radial-gradient(120% 90% at 0% 100%,#3d4527 0%,#1a2016 45%,#0b0f0b 100%);border:1px solid var(--goldline);overflow:hidden}
+.card{position:relative;width:100%;max-width:330px;aspect-ratio:1.586;border-radius:16px;background:radial-gradient(140% 120% at 20% 0%,#dcb94a 0%,#d2ab3a 55%,#c69f31 100%);box-shadow:0 22px 40px -18px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.18);color:var(--gold-ink);transform:rotate(-4deg)}
+.card .mk{position:absolute;left:22px;top:20px;width:28px;height:28px;color:#fff}
+.card .net{position:absolute;right:22px;top:18px;color:#fff;text-align:right;line-height:1}
+.card .net b{display:block;font-weight:600;font-style:italic;font-size:20px}
+.card .net small{font-size:8px;opacity:.9}
+.card .nm{position:absolute;left:22px;bottom:20px;font-size:12px}
+.card .l4{position:absolute;right:22px;bottom:20px;font-size:13px;font-family:var(--mono)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}
+.frz{color:var(--burn)}
+.ltable{width:100%;border-collapse:collapse;font-size:.86rem;min-width:780px}
+.ltable th{text-align:left;color:var(--g3);font-weight:500;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px 6px 0;border-bottom:1px solid var(--line)}
+.ltable td{padding:8px 10px 8px 0;border-bottom:1px dashed var(--line-2);vertical-align:middle}
+.ltable td:nth-child(2){color:var(--ink);font-weight:500}
+.ltable .r{text-align:right}
+.ubar{display:inline-block;width:56px;height:5px;border-radius:9px;background:var(--pane-3);vertical-align:middle;margin-right:6px;overflow:hidden}
+.ubar i{display:block;height:100%}
+.conn{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:10px}
+.cn{border:1px solid var(--goldline);border-radius:10px;background:var(--pane);padding:12px;display:grid;gap:6px;align-content:start}
+.cn.on{border-color:var(--g)}
+.cn .cnh{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.cn .cnn{color:var(--ink);font-weight:600}
+.cn .cat{color:var(--g3);font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase}
+.cn p{font-size:.82rem}
+.cn .st{font-family:var(--mono);font-size:.7rem;color:var(--g3)}
+.cn.on .st{color:var(--g)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{background:none;border:1px solid var(--line);color:var(--g2);padding:3px 10px;font-size:.78rem;border-radius:6px}
+.chip:hover,.chip[aria-pressed="true"]{border-color:var(--g);color:var(--g)}
+
+/* ---- crypto ---- */
+.cx-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:16px;align-items:start}
+@media (max-width:860px){.cx-grid{grid-template-columns:1fr}}
+.arow{display:grid;grid-template-columns:44px minmax(0,1fr) 64px auto;gap:10px;align-items:center;padding:9px 6px;border:0;border-bottom:1px dashed var(--line-2);background:none;color:inherit;text-align:left;width:100%}
+.arow:hover{background:var(--pane-2)}
+.arow[aria-pressed="true"]{background:var(--pane-2);box-shadow:inset 3px 0 0 var(--copper)}
+.tick{font-weight:600;color:var(--ink);background:rgba(205,118,62,.16);border:1px solid rgba(205,118,62,.5);border-radius:4px;padding:2px 0;text-align:center;font-size:.7rem}
+.arow .an{color:var(--ink);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.arow .ap{text-align:right}
+.spark{width:64px;height:24px;display:block}
+.seg,.ranges{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;width:max-content;max-width:100%}
+.seg button,.ranges button{background:none;border:0;border-right:1px solid var(--line-2);color:var(--g3);padding:5px 12px;font-size:.74rem;font-family:var(--mono)}
+.seg button:last-child,.ranges button:last-child{border-right:0}
+.seg button[aria-pressed="true"],.ranges button[aria-pressed="true"]{background:rgba(90,247,142,.14);color:var(--g)}
+.chartbox{position:relative}
+.chartbox svg{width:100%;height:auto;display:block}
+.hov{position:absolute;top:0;left:0;background:#0c1222;border:1px solid var(--line);border-radius:4px;padding:2px 8px;font-size:.74rem;color:var(--ink);pointer-events:none;white-space:nowrap;font-family:var(--mono)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.stats div{border-top:1px dashed var(--line);padding-top:4px}
+.stats b{display:block;font-weight:500;color:var(--ink);font-family:var(--mono)}
+.preview{display:grid;gap:2px;font-size:.86rem}
+.preview div{display:flex;justify-content:space-between;gap:12px}
+.preview b{color:var(--ink);font-weight:500;font-family:var(--mono)}
+.gate{border:1px dashed var(--g);border-radius:8px;padding:12px;display:grid;gap:8px}
+.opt{display:block;text-align:left;width:100%;background:rgba(4,6,12,.6);border:1px solid var(--line);color:var(--g2);padding:8px 10px;margin-bottom:6px;border-radius:6px}
+.opt:hover{border-color:var(--g);color:var(--ink)}
+.why{border-top:1px dashed var(--line);padding-top:8px;font-size:.86rem;max-width:68ch}
+
+/* ---- capital points ---- */
+.ktable{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.ktable th{text-align:left;color:var(--g3);font-weight:500;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px 6px 0;border-bottom:1px solid var(--line)}
+.ktable td{padding:8px 10px 8px 0;border-bottom:1px dashed var(--line-2)}
+.ktable td b{color:var(--ink);font-weight:500}
+.kids{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:12px}
+.pts{font-family:var(--mono);font-size:2rem;line-height:1;color:var(--ink)}
+.wish{display:grid;gap:4px;padding:6px 0;border-bottom:1px dashed var(--line-2)}
+.wish .wh{display:flex;justify-content:space-between;gap:8px}
+.wish .wh span:first-child{color:var(--ink)}
+.wish .wa{display:flex;gap:10px}
+.wish .wa button{background:none;border:0;color:var(--g3);font-size:.76rem;padding:0;text-decoration:underline}
+
+/* ---- CTA ---- */
+.cta{border:1px solid var(--goldline);border-radius:16px;background:linear-gradient(160deg,rgba(23,40,90,.7) 0%,rgba(4,6,12,.8) 100%);backdrop-filter:blur(14px);padding:24px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;align-items:center}
+@media (max-width:760px){.cta{grid-template-columns:1fr}}
+.cta .price{font-family:var(--mono);font-size:3rem;line-height:1;color:var(--ink)}
+.cta ul{margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:.9rem}
+.sheet{position:fixed;inset:0;background:rgba(4,6,12,.75);display:grid;place-items:end center;padding:16px;z-index:40}
+.sheet .box{width:100%;max-width:520px;background:#0c1222;border:1px solid var(--goldline);border-radius:12px;padding:16px;display:grid;gap:12px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ===== v12: makeCENTS layout — gold lines only on matrix boxes ===== */
+.pane,.status,.tabs,.hero-vid,.stage,.cta,.cn,.cn.on,.sheet .box,.gate,.opt,.seg,.ranges,.chip,.kb.k,.kb.u{border:0!important}
+.pane > .bar{border-bottom:0}
+.status,.tabs{background:rgba(12,17,32,.5)}
+.pane{background:rgba(12,17,32,.55)}
+.cn{background:rgba(22,30,54,.55)} .cn.on{background:rgba(90,247,142,.08)}
+.chip{background:rgba(255,255,255,.06)} .chip[aria-pressed="true"]{background:rgba(90,247,142,.16)}
+.seg,.ranges{background:rgba(255,255,255,.05)}
+.gate{background:rgba(90,247,142,.06)} .opt{background:rgba(255,255,255,.05)}
+input,select{border:0;background:rgba(255,255,255,.07)}
+.hero-vid{background:#000 url(media/intro.jpg) center/contain no-repeat;border-radius:14px}
+.story{display:grid;grid-template-columns:1fr;gap:6px;justify-items:center;text-align:center;padding:18px 0 6px}
+.story .pre{font-family:var(--mono);color:var(--g);letter-spacing:.32em;text-transform:uppercase;font-size:.82rem}
+.brand{font-size:clamp(3rem,10vw,6rem);letter-spacing:-.045em}
+.brand b{letter-spacing:.01em}
+.story .sub{margin-top:4px}
+.story .lead{max-width:56ch;color:var(--g2);margin-top:6px}
+.kingstage{display:grid;justify-items:center;gap:14px;text-align:center;padding:10px 0 4px}
+.kswitch{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.06);flex-wrap:wrap;justify-content:center}
+.kswitch button{border:0;background:none;color:var(--g2);border-radius:999px;padding:8px 16px;font-weight:600;font-size:.84rem;display:inline-flex;gap:8px;align-items:center}
+.kswitch button i{width:9px;height:9px;border-radius:50%}
+.kswitch button[aria-pressed="true"]{background:#fff;color:#04060c}
+.orb.big{width:clamp(150px,26vw,220px);height:clamp(150px,26vw,220px);transition:box-shadow .5s}
+.kname{font-size:1.5rem}
+.kmsgs{width:min(680px,100%);max-height:280px;text-align:left}
+.kin{width:min(680px,100%);justify-content:center}
+.kin input{flex:1 1 240px;border-radius:999px;padding:12px 18px;font-size:1rem;background:rgba(255,255,255,.08)}
+.wbtn{border:1px solid #fff;background:#fff;color:#04060c;border-radius:999px;padding:11px 22px;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;transition:transform .2s}
+.wbtn:hover{transform:translateY(-1px)} .wbtn:disabled{opacity:.5}
+.wbtn.ghost{background:transparent;color:#fff}
+.slider{display:grid;grid-auto-flow:column;grid-auto-columns:100%;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.slider::-webkit-scrollbar{display:none}
+.slide{scroll-snap-align:start;min-width:0;display:grid;gap:10px;align-content:start}
+.slh{display:flex;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;align-items:baseline}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
+.dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(255,255,255,.25);padding:0}
+.dots button[aria-pressed="true"]{background:#fff;width:26px;border-radius:9px}
+.sat{display:grid;gap:12px}
+@media (max-width:520px){.kswitch{flex-wrap:nowrap}.kswitch button{padding:7px 10px;font-size:.74rem;gap:5px;white-space:nowrap}}
+.house,.core{border-color:var(--gold)}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="bullIcon" viewBox="0 0 24 24"><path fill="currentColor" d="M2.2 4.2c.2 3.4 2.4 5.6 5.4 5.9l.6 6.3c.3 3.1 1.9 5.6 3.8 5.6s3.5-2.5 3.8-5.6l.6-6.3c3-.3 5.2-2.5 5.4-5.9-1.2 1.9-3.1 3-5.4 3H7.6c-2.3 0-4.2-1.1-5.4-3z"/><circle cx="10.2" cy="18.6" r=".9" fill="#04060c"/><circle cx="13.8" cy="18.6" r=".9" fill="#04060c"/><circle cx="9.6" cy="12.4" r="1" fill="#04060c"/><circle cx="14.4" cy="12.4" r="1" fill="#04060c"/></symbol>
+  <symbol id="star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.9 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"/></symbol>
+</defs></svg>
+<div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<header class="lm"><div class="lm-in">
+  <a class="wm" href="https://lorraenmadre.com" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#star"/></svg>LORRAEN MADRE</a>
+  <nav class="doors" aria-label="Lorraen Madre">
+    <a class="door design" href="https://lorraenmadre.app" target="_blank" rel="noopener">Design</a>
+    <a class="door work" href="https://lorraenmadre.com/connect" target="_blank" rel="noopener">Work</a>
+    <a class="door play" href="https://lorraenmadre.com/library" target="_blank" rel="noopener">Play</a>
+  </nav>
+</div></header>
+
+<div class="app">
+  <div class="hero-vid"><video id="heroVid" src="media/intro.mp4" poster="media/intro.jpg" autoplay muted loop playsinline preload="auto" aria-label="LORRAEN MADRE intro"></video></div>
+
+  <section class="story" aria-labelledby="brandH">
+    <p class="pre">Make it</p>
+    <h1 class="brand" id="brandH">make<b>CENTS</b></h1>
+    <p class="sub">Home economics for the Universal Family Office</p>
+    <p class="lead">Three Kings, Cash, Credit and Crypto, run through the same 12 Houses of your home economy. One simple way to learn every stream of money your family has.</p>
+  </section>
+
+  <section class="kingstage" aria-label="Talk to a King">
+    <div class="kswitch" role="tablist" aria-label="Choose a King">
+      <button role="tab" data-king="cash" aria-pressed="true"><i style="background:var(--gold)"></i>King Cash</button>
+      <button role="tab" data-king="credit" aria-pressed="false"><i style="background:var(--silver)"></i>King Credit</button>
+      <button role="tab" data-king="crypto" aria-pressed="false"><i style="background:var(--copper)"></i>King Crypto</button>
+    </div>
+    <div class="orb big gold" id="orb" aria-hidden="true"><video src="media/orb.mp4" poster="media/orb.jpg" autoplay muted loop playsinline></video></div>
+    <h2 class="kname" id="kname">King Cash</h2>
+    <div class="kmsgs" id="kmsgs" aria-live="polite" hidden></div>
+    <form class="kin" id="kform"><input id="kin" type="text" maxlength="400" placeholder="Ask King Cash" aria-label="Ask the King" autocomplete="off"><button class="wbtn" type="submit" id="kgo">Ask</button><button class="wbtn ghost" type="button" id="kvoice">Voice on</button></form>
+  </section>
+
+  <section class="slider-wrap" aria-label="12-House boards">
+    <div class="slider" id="slider">
+      <div class="slide" data-k="cash"><div class="slh"><span class="lbl" style="color:var(--gold)">♔ King Cash · 12 cash lines</span><span class="meta">tap a House to set income, burn and allowance</span></div><div class="board" id="boardCash"></div>
+        <div class="legend"><span><svg class="bull ok"><use href="#bullIcon"/></svg>Covers its burn</span><span><svg class="bull bad"><use href="#bullIcon"/></svg>Burning more than it gets</span></div></div>
+      <div class="slide" data-k="credit"><div class="slh"><span class="lbl" style="color:var(--silver)">♕ King Credit · 12 credit lines</span><span class="meta">tap a House to edit its line</span></div><div class="board" id="boardCredit"></div>
+        <div class="legend"><span><svg class="bull ok"><use href="#bullIcon"/></svg>Under 30% used or loan on schedule</span><span><svg class="bull bad"><use href="#bullIcon"/></svg>Over 30% used</span><span><svg class="bull none"><use href="#bullIcon"/></svg>No line</span></div></div>
+      <div class="slide" data-k="crypto"><div class="slh"><span class="lbl" style="color:var(--copper)">♚ King Crypto · 12 crypto lines</span><span class="meta">tap a House to trade for it</span></div><div class="board" id="boardCrypto"></div>
+        <div class="legend"><span><svg class="bull ok"><use href="#bullIcon"/></svg>Worth more than it cost</span><span><svg class="bull bad"><use href="#bullIcon"/></svg>Worth less than it cost</span><span><svg class="bull none"><use href="#bullIcon"/></svg>No crypto yet</span></div></div>
+    </div>
+    <div class="dots" id="dots"><button data-king="cash" aria-label="Cash board"></button><button data-king="credit" aria-label="Credit board"></button><button data-king="crypto" aria-label="Crypto board"></button></div>
+  </section>
+
+  <section class="pane" id="matrix" aria-labelledby="mxH">
+    <div class="bar"><b id="mxH">Total matrix · 12 Houses × 3 Kings</b><span>36 lines · Bull 13 at the bottom</span></div>
+    <div class="body">
+      
+      <div class="scroll"><table class="mx"><thead><tr><th>House</th><th class="kc">♔ King Cash<small>12 cash lines</small></th><th class="kr">♕ King Credit<small>12 credit lines</small></th><th class="kx">♚ King Crypto<small>12 crypto lines</small></th></tr></thead><tbody id="mxBody"></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="sat" aria-labelledby="satH">
+    <div class="intro"><div><span class="lbl">Satellites</span><h2 id="satH">Connectors around your New Castle.</h2></div><b class="meta" id="connCount"></b></div>
+    <div class="conn" id="creditConn"></div>
+    <div class="chips" id="connFilters"></div><div class="conn" id="connList"></div>
+    <p class="fine">Planned connectors for the demo. Names belong to their owners; none of these are partnerships yet, and connecting here does nothing real.</p>
+  </section>
+
+  <div class="intro" style="margin-top:8px"><div><span class="lbl">Tools</span><h2>Work each line.</h2></div></div>
+
+
+  <header class="status">
+    <span class="prompt">makecents://<input id="famName" class="fam" type="text" value="the-madre-house" maxlength="24" aria-label="Family name"></span>
+    <span class="stat num"><span>cash <b id="sCash">$0</b></span><span>owed <b id="sOwed">$0</b></span><span>crypto <b id="sCrypto">$0</b></span><span>made <b id="sRate">$0</b>/hr</span></span>
+    <span class="demo">DEMO · PRETEND MONEY</span>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" data-v="cash" aria-selected="true"><span class="k">1</span>CASH</button>
+    <button class="tab" role="tab" data-v="credit" aria-selected="false"><span class="k">2</span>CREDIT</button>
+    <button class="tab" role="tab" data-v="crypto" aria-selected="false"><span class="k">3</span>CRYPTO</button>
+    <button class="tab" role="tab" data-v="move" aria-selected="false"><span class="k">4</span>MOVE MONEY</button>
+    <button class="tab" role="tab" data-v="points" aria-selected="false"><span class="k">5</span>CAPITAL POINTS</button>
+  </nav>
+
+  <!-- ============ CASH ============ -->
+  <section class="view" id="v-cash">
+    <div class="pane"><div class="bar"><span>Allowance schedule · paid from House 1</span><b id="nextRun"></b></div>
+      <div class="body"><div class="list" id="schedule"></div><div class="pair"><button class="pill red" id="runSched">Pay this round</button><span class="msg" id="schedMsg" role="status"></span></div></div></div>
+    <div class="pane"><div class="bar"><span>Log</span><span>newest first</span></div><div class="body"><div class="list" id="activity"></div></div></div>
+  </section>
+
+  <!-- ============ CREDIT ============ -->
+  <section class="view" id="v-credit" hidden>
+    <div class="pane"><div class="bar"><b>All 12 lines</b><span id="linesCount"></span></div><div class="body">
+      <div class="scroll"><table class="ltable"><thead><tr><th>House</th><th>Line</th><th>Type</th><th class="r">Balance</th><th class="r">Limit</th><th>Used</th><th class="r">APR</th><th class="r">Payment</th><th>Due</th></tr></thead><tbody id="linesBody"></tbody></table></div>
+      <form class="row" id="lineForm">
+        <div class="field" style="flex:0 1 190px"><label for="lHouse">House</label><select id="lHouse"></select></div>
+        <div class="field"><label for="lName">Line</label><input id="lName" type="text" maxlength="30" placeholder="Lender or card name"></div>
+        <div class="field" style="flex:0 1 150px"><label for="lType">Type</label><select id="lType"><option>Credit card</option><option>Store card</option><option>Line of credit</option><option>Auto loan</option><option>Mortgage</option><option>Student loan</option><option>Personal loan</option><option>Installment</option><option>Policy loan</option><option>None</option></select></div>
+        <div class="field" style="flex:0 1 100px"><label for="lBal">Balance $</label><input id="lBal" type="number" min="0" value="0"></div>
+        <div class="field" style="flex:0 1 100px"><label for="lLim">Limit $</label><input id="lLim" type="number" min="0" value="1000"></div>
+        <div class="field" style="flex:0 1 80px"><label for="lApr">APR %</label><input id="lApr" type="number" min="0" step=".01" value="22"></div>
+        <div class="field" style="flex:0 1 90px"><label for="lPay">Pay $/mo</label><input id="lPay" type="number" min="0" value="25"></div>
+        <button class="pill red" type="submit">Save line</button>
+      </form>
+    </div></div>
+    <div class="credit-top">
+      <div class="stage"><div class="card" role="img" aria-label="Family debit card">
+        <svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><use href="#star"/></svg>
+        <span class="net"><b>DEBIT</b><small>makeCENTS</small></span>
+        <span class="nm" id="cardName">The Madre House</span><span class="l4">•••• 1313</span></div></div>
+      <div class="pane"><div class="bar"><span>House cards · spending room</span><span>this month</span></div><div class="body" id="creditSum"></div></div>
+    </div>
+    <div class="cards" id="cardList"></div>
+    <div class="pane"><div class="bar"><span>Issue a House card</span></div><div class="body">
+      <form class="row" id="cardForm">
+        <div class="field"><label for="cHolder">Holder</label><input id="cHolder" type="text" maxlength="22" placeholder="Name or department"></div>
+        <div class="field"><label for="cHouse">Spends from</label><select id="cHouse"></select></div>
+        <div class="field" style="flex:0 1 130px"><label for="cLimit">Limit $/mo</label><input id="cLimit" type="number" min="1" value="300"></div>
+        <button class="pill red" type="submit">Issue card</button>
+      </form></div></div>
+  </section>
+
+  <!-- ============ CRYPTO ============ -->
+  <section class="view" id="v-crypto" hidden>
+    <div class="cx-grid" id="trade">
+      <div class="pane"><div class="bar"><span>Markets</span><span>practice prices</span></div><div class="body" style="padding:4px 8px"><div id="cxList"></div></div></div>
+      <div class="pane"><div class="bar"><b id="cxName"></b><span id="cxChg"></span></div><div class="body">
+        <div class="intro"><div class="big num" id="cxPrice"></div>
+          <div class="ranges" id="cxRanges"><button data-r="1D" aria-pressed="true">1D</button><button data-r="1W" aria-pressed="false">1W</button><button data-r="1M" aria-pressed="false">1M</button><button data-r="1Y" aria-pressed="false">1Y</button></div></div>
+        <div class="chartbox"><svg id="cxChart" viewBox="0 0 600 220" role="img" aria-label="Price chart"></svg><span class="hov" id="cxHover" hidden></span></div>
+        <div class="row"><div class="field"><label for="cxHouse">For House</label><select id="cxHouse"></select></div></div>
+        <div class="stats" id="cxStats"></div>
+        <div class="seg" id="cxSide"><button data-s="buy" aria-pressed="true">BUY</button><button data-s="sell" aria-pressed="false">SELL</button><button data-s="convert" aria-pressed="false">CONVERT</button></div>
+        <div class="row">
+          <div class="field" style="flex:0 1 140px"><label for="cxAmt">Amount $</label><input id="cxAmt" type="number" min="1" step="1" value="25" inputmode="decimal"></div>
+          <div class="field" id="cxToWrap" hidden><label for="cxTo">Convert to</label><select id="cxTo"></select></div>
+          <div class="field" id="cxFreqWrap"><label for="cxFreq">How often</label><select id="cxFreq"><option value="once">One time</option><option value="weekly">Every allowance round</option></select></div>
+        </div>
+        <div class="chips" id="cxChips"><button class="chip" data-q="10">$10</button><button class="chip" data-q="25">$25</button><button class="chip" data-q="100">$100</button><button class="chip" data-q="max">MAX</button></div>
+        <div class="preview" id="cxPreview"></div>
+        <div class="gate" id="cxGate" hidden></div>
+        <div class="pair"><button class="pill blue" id="cxWhy">Watch the risk</button><button class="pill red" id="cxGo">Buy</button></div>
+        <p class="msg" id="cxMsg" role="status"></p>
+        <p class="why" id="cxWhyText" hidden>Crypto can drop fast, sometimes by half in a few months. It isn't FDIC-insured and isn't a deposit. Only use money a House can afford to lose, never Insurance or Real Estate money. makeCENTS teaches how markets work; it doesn't tell you what to buy.</p>
+      </div></div>
+    </div>
+    <div class="pane"><div class="bar"><span>Recurring buys</span><span>run with each allowance round</span></div><div class="body"><div class="list" id="cxRecurring"></div></div></div>
+  </section>
+
+  <!-- ============ MOVE MONEY ============ -->
+  <section class="view" id="v-move" hidden>
+    <div class="intro"><div><span class="lbl">Move Money</span><h2>Move it between Houses.</h2></div></div>
+    <div class="pane"><div class="bar"><span>Transfer</span><span>between Houses</span></div><div class="body">
+      <form class="row" id="moveForm" novalidate>
+        <div class="field"><label for="from">From</label><select id="from"></select></div>
+        <div class="field"><label for="to">To</label><select id="to"></select></div>
+        <div class="field" style="flex:0 1 130px"><label for="amt">Amount $</label><input id="amt" type="number" min="1" step="1" value="50"></div>
+        <button type="submit" class="pill red" id="moveGo">Move $50</button>
+      </form><p class="msg" id="moveMsg" role="status"></p></div></div>
+  </section>
+
+  <!-- ============ CAPITAL POINTS ============ -->
+  <section class="view" id="v-points" hidden>
+    <div class="intro"><div><span class="lbl">Capital Points · Light Scouts</span><h2>1 point = $1, saved toward what they want.</h2></div><p class="meta">Points pay out from House 1 into House 12 and fill each kid's wish list from the top. Kids can cash out any time and see what it costs their wish.</p></div>
+    <div class="pane"><div class="bar"><span>All scouts</span><b id="ptsTotal"></b></div><div class="body scroll">
+      <table class="ktable"><thead><tr><th>Scout</th><th>Points</th><th>Value</th><th>Saving for</th><th>Progress</th><th>Weekly</th></tr></thead><tbody id="kidTable"></tbody></table></div></div>
+    <div class="kids" id="kids"></div>
+    <div class="pane"><div class="bar"><span>Add a scout</span></div><div class="body">
+      <form class="row" id="kidForm">
+        <div class="field"><label for="kidName">Name</label><input id="kidName" type="text" maxlength="20" placeholder="First name"></div>
+        <div class="field"><label for="kidWish">First wish</label><input id="kidWish" type="text" maxlength="30" placeholder="Video game console"></div>
+        <div class="field" style="flex:0 1 110px"><label for="kidCost">Cost $</label><input id="kidCost" type="number" min="1" value="450"></div>
+        <button class="pill red" type="submit">Add scout</button>
+      </form></div></div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta" aria-labelledby="ctaH">
+    <div style="display:grid;gap:10px">
+      <span class="lbl">Own one</span>
+      <h2 id="ctaH">Want three Kings for your New Castle?</h2>
+      <p style="color:var(--g)">makeCENTS · Home economics for the Universal Family Office.</p>
+      <p>I built this for my family first: twelve Houses, each with a cash line, a credit line and a crypto line, plus Capital Points for the kids. Now your household can run on it too.</p>
+      <ul><li>12 Houses × 3 Kings: cash, credit and crypto on one board</li><li>King voice boxes that answer from your own numbers</li><li>House cards with limits, and every line of credit in one view</li><li>Capital Points and wish lists for your scouts</li></ul>
+    </div>
+    <div style="display:grid;gap:12px;align-content:center">
+      <div><span class="price num">$2</span> <span class="meta">/ month per family</span></div>
+      <div class="pair"><button class="pill red" id="ctaStart">Start my New Castle</button><button class="pill blue" id="ctaDemo">Request a demo</button></div>
+      <form class="row" id="demoForm" hidden>
+        <div class="field"><label for="dName">Name</label><input id="dName" type="text" maxlength="40"></div>
+        <div class="field"><label for="dEmail">Email</label><input id="dEmail" type="email" maxlength="60"></div>
+        <button class="pill blue" type="submit">Send request</button>
+      </form>
+      <p class="msg" id="ctaMsg" role="status"></p>
+    </div>
+  </section>
+
+  <div class="pair"><button class="pill ghost sm" id="reset">Reset demo</button><span class="meta">Keys 1–5 switch tabs.</span></div>
+  <p class="fine">Demo with pretend money; nothing moves real funds. When live, makeCENTS will not be a bank: banking services will be provided by a partner bank, Member FDIC. Crypto will not be FDIC-insured, is not a deposit, and may lose value. Lessons and King answers are education, not financial or investment advice. Houses 7 and 10 are placeholder types; credit lines and kid names are examples.</p>
+</div>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="box">
+    <span class="lbl" id="sheetHouse"></span><h3 id="sheetTitle"></h3><p class="meta" id="sheetPurpose"></p>
+    <div class="row"><div class="field"><label for="typeInput">House type</label><input id="typeInput" type="text" maxlength="28"></div></div>
+    <div class="row"><div class="field"><label for="incInput">Income $/mo</label><input id="incInput" type="number" min="0"></div><div class="field"><label for="burnInput">Burn rate $/mo</label><input id="burnInput" type="number" min="0"></div></div>
+    <div class="row" id="allowRow"><div class="field"><label for="allowInput">Allowance $</label><input id="allowInput" type="number" min="0"></div><div class="field"><label for="everyInput">Every</label><select id="everyInput"><option value="week">Week</option><option value="2weeks">2 weeks</option><option value="month">Month</option></select></div></div>
+    <div class="pair"><button class="pill ghost" id="sheetClose">Close</button><button class="pill red" id="sheetSave">Save House</button></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const KEY='makesense-home-economy-v1';
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const r2=n=>Math.round(n*100)/100;
+  const fmt=n=>{const v=r2(n);return (v<0?'−':'')+'$'+Math.abs(v).toLocaleString('en-US',{minimumFractionDigits:v%1?2:0,maximumFractionDigits:2});};
+  const hid=n=>'H'+String(n).padStart(2,'0');
+
+  /* ---------- prices ---------- */
+  const PRICES={BTC:60000,ETH:3000,SOL:150,USDC:1};
+  const ASSETS={BTC:{name:'Bitcoin',vol:.028},ETH:{name:'Ether',vol:.038},SOL:{name:'Solana',vol:.055},USDC:{name:'USD Coin',vol:0}};
+  let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
+  const gauss=()=>{let u=0,v=0;while(!u)u=rnd();while(!v)v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);};
+  const HIST={};
+  Object.keys(ASSETS).forEach(k=>{const vol=ASSETS[k].vol;const mk=(n,st,dr)=>{const a=[PRICES[k]];for(let i=1;i<n;i++){const r=k==='USDC'?gauss()*.0002:gauss()*vol*Math.sqrt(st)+dr*st;a.unshift(k==='USDC'?Math.min(1.002,Math.max(.998,a[0]/(1+r))):Math.max(.01,a[0]/(1+r)));}return a;};
+    HIST[k]={'1D':mk(97,1/96,.0006),'1W':mk(169,1/24,.0008),'1M':mk(31,1,.002),'1Y':mk(366,1,.0015)};});
+
+  /* ---------- state ---------- */
+  const EVERY={week:'week','2weeks':'2 weeks',month:'month'}, PERMO={week:52/12,'2weeks':26/12,month:1};
+  const REVOLVING=['Credit card','Store card','Line of credit'];
+  const coins=(spec)=>{const c={BTC:0,ETH:0,SOL:0,USDC:0},b={BTC:0,ETH:0,SOL:0,USDC:0};Object.entries(spec).forEach(([k,[usd,ret]])=>{c[k]=usd/PRICES[k];b[k]=r2(usd/(1+ret));});return {c,b};};
+  const H0=[
+    {id:1,type:'Family Business',purpose:'The holding company. Income lands here first, then pays every other House its allowance.',bal:4200,inc:6000,burn:300,allow:null,line:{name:'Business rewards card',type:'Credit card',bal:3200,limit:15000,apr:21.9,pay:96,due:'Oct 19'},cx:{ETH:[400,.06]}},
+    {id:2,type:'Treasury',purpose:'The reserve. Savings, investing and the family\'s main crypto.',bal:2350,inc:40,burn:0,allow:{amt:250,every:'month'},line:{name:'Securities-backed line',type:'Line of credit',bal:0,limit:25000,apr:8.5,pay:0,due:''},cx:{BTC:[1200,.12],USDC:[300,0]}},
+    {id:3,type:'Telecom',purpose:'Phones, internet and tech.',bal:740,inc:0,burn:180,allow:{amt:80,every:'2weeks'},line:{name:'Phone financing',type:'Installment',bal:640,limit:1200,apr:0,pay:40,due:'Oct 12'},cx:{}},
+    {id:4,type:'Real Estate',purpose:'Rent or mortgage, utilities, groceries and upkeep.',bal:2100,inc:0,burn:2400,allow:{amt:600,every:'week'},line:{name:'Home',type:'Mortgage',bal:236000,limit:260000,apr:5.75,pay:1650,due:'Nov 1'},cx:{}},
+    {id:5,type:'Operations',purpose:'Side business and sprint money. The work that earns.',bal:600,inc:900,burn:250,allow:null,line:{name:'Business line of credit',type:'Line of credit',bal:2100,limit:10000,apr:11.5,pay:85,due:'Oct 25'},cx:{SOL:[250,-.09]}},
+    {id:6,type:'Health Department',purpose:'Wellness, gym, appointments and habits.',bal:180,inc:0,burn:120,allow:{amt:60,every:'2weeks'},line:{name:'Health credit card',type:'Credit card',bal:300,limit:2500,apr:26.99,pay:35,due:'Oct 21'},cx:{}},
+    {id:7,type:'Partnerships',purpose:'Placeholder: shared costs and partner deals.',bal:0,inc:0,burn:0,allow:null,line:null,cx:{}},
+    {id:8,type:'Insurance',purpose:'Premiums and the emergency fund.',bal:1000,inc:0,burn:160,allow:{amt:200,every:'month'},line:{name:'Whole-life policy loan',type:'Policy loan',bal:0,limit:5000,apr:6,pay:0,due:''},cx:{USDC:[500,0]}},
+    {id:9,type:'Education & Travel',purpose:'Homeschool, courses and family trips.',bal:320,inc:0,burn:200,allow:{amt:100,every:'2weeks'},line:{name:'Graduate degree',type:'Student loan',bal:18400,limit:30000,apr:5.5,pay:210,due:'Oct 28'},cx:{BTC:[100,-.04]}},
+    {id:10,type:'Media & Reputation',purpose:'Placeholder: licenses, branding and growth.',bal:150,inc:0,burn:60,allow:null,line:{name:'Cash-back card',type:'Credit card',bal:1620,limit:3000,apr:29.99,pay:45,due:'Oct 22'},cx:{}},
+    {id:11,type:'Foundation',purpose:'Tithes, gifts and community support.',bal:240,inc:0,burn:300,allow:{amt:150,every:'2weeks'},line:null,cx:{}},
+    {id:12,type:'Dreams & Products',purpose:'Where Capital Points live. Scout payouts land here.',bal:410,inc:0,burn:0,allow:null,line:{name:'Department store card',type:'Store card',bal:310,limit:1000,apr:31.24,pay:30,due:'Oct 15'},cx:{BTC:[50,.03]}}
+  ];
+  const nextFriday=()=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+((5-d.getDay()+7)%7||7));return d.getTime();};
+  const fresh=()=>({
+    family:'the-madre-house',
+    houses:H0.map(h=>{const {c,b}=coins(h.cx);return {id:h.id,type:h.type,purpose:h.purpose,bal:h.bal,inc:h.inc,burn:h.burn,allow:h.allow?{...h.allow}:null,line:h.line?{...h.line}:null,coins:c,basis:b};}),
+    activity:[], nextRun:nextFriday(), round:0,
+    cards:[{id:1,holder:'Head of House',house:1,limit:5000,spent:1240,frozen:false,last4:'1313'},{id:2,holder:'Real Estate',house:4,limit:2500,spent:1610,frozen:false,last4:'4040'},{id:3,holder:'Operations',house:5,limit:800,spent:210,frozen:false,last4:'5505'},{id:4,holder:'Nia',house:12,limit:100,spent:35,frozen:true,last4:'1212'}],
+    kids:[{id:1,name:'Nia',points:120,weekly:10,wishes:[{name:'Video game console',cost:450},{name:'Art tablet',cost:300}]},{id:2,name:'Jordan',points:290,weekly:15,wishes:[{name:'Youth dirt bike',cost:1200},{name:'Basketball camp',cost:250}]}],
+    cryptoOK:false, recurring:[], conns:{}
+  });
+  let S; try{S=JSON.parse(localStorage.getItem(KEY))||fresh();}catch(e){S=fresh();}
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}};
+  const H=id=>S.houses.find(h=>h.id===+id);
+  const log=(t,a,k)=>{S.activity.unshift({t,a,k,at:Date.now()});S.activity=S.activity.slice(0,14);};
+
+  /* ---------- totals ---------- */
+  const cash=()=>S.houses.reduce((a,h)=>a+h.bal,0);
+  const incM=()=>S.houses.reduce((a,h)=>a+(+h.inc||0),0);
+  const burnM=()=>S.houses.reduce((a,h)=>a+(+h.burn||0),0);
+  const perHr=m=>m*12/8760;
+  const allowMo=h=>h.allow?h.allow.amt*PERMO[h.allow.every]:0;
+  const hcv=h=>Object.keys(h.coins).reduce((a,k)=>a+h.coins[k]*PRICES[k],0);
+  const hbasis=h=>Object.values(h.basis).reduce((a,b)=>a+b,0);
+  const cryptoVal=()=>S.houses.reduce((a,h)=>a+hcv(h),0);
+  const tq=k=>S.houses.reduce((a,h)=>a+(h.coins[k]||0),0);
+  const owed=()=>S.houses.reduce((a,h)=>a+(h.line?h.line.bal:0),0);
+  const lineUse=l=>l&&l.limit?l.bal/l.limit:0;
+  const revolving=()=>S.houses.filter(h=>h.line&&REVOLVING.includes(h.line.type));
+
+  /* ---------- shared board ---------- */
+  const bullSvg=(state,label)=>`<svg class="bull ${state}" role="img" aria-label="${label}"><use href="#bullIcon"/></svg>`;
+  function board(el,tile,core){ $(el).innerHTML=S.houses.map(h=>`<button class="house p${h.id}" data-h="${h.id}">${tile(h)}</button>`).join('')+core(); }
+  const head=(h,state,label)=>`<span class="hn"><span>${hid(h.id)}${h.id===1?' · HEAD':''}</span>${bullSvg(state,label)}</span><span class="ty">${esc(h.type)}</span>`;
+
+  // CASH
+  function tileCash(h){ const ok=(+h.inc||0)+allowMo(h)>=(+h.burn||0);
+    return head(h,ok?'ok':'bad',ok?'covered':'burning more than it gets')+`<span class="bal num">${fmt(h.bal)}</span>${h.burn?`<span class="ln burn">burn −${fmt(h.burn)}/mo</span>`:''}${h.inc?`<span class="ln in">in +${fmt(h.inc)}/mo</span>`:''}${h.allow?`<span class="ln alw">gets ${fmt(h.allow.amt)}/${EVERY[h.allow.every]}</span>`:''}`; }
+  function coreCash(){ const h=perHr(incM()),b=perHr(burnM()),net=h-b,run=burnM()?cash()/burnM():0;
+    return `<div class="core"><div style="display:flex;justify-content:space-between;gap:8px"><span class="lbl" style="color:var(--gold)">Bull 13 · Cash line</span><span class="meta">all 12 Houses</span></div>
+      <div><span class="big num">${fmt(h)}</span> <span class="meta">made / hour</span></div>
+      <div class="k3"><div><span class="lbl">Burn</span><b class="dn num">−${fmt(b)}</b><span class="meta">${fmt(burnM())}/mo</span></div><div><span class="lbl">Kept</span><b class="${net>=0?'up':'dn'} num">${fmt(net)}</b><span class="meta">${fmt(net*730)}/mo</span></div><div><span class="lbl">Runway</span><b class="num">${burnM()?run.toFixed(1)+' mo':'—'}</b><span class="meta">if income stops</span></div></div>
+      <svg id="cashChart" viewBox="0 0 400 130" role="img" aria-label="Cash over the last 30 days"></svg><span class="meta">cash · last 30 days · demo history</span></div>`; }
+  function lineChart(id,pts,labels,col,fmtY){
+    const svg=$(id); if(!svg) return; const W=400,B=112,T=8,L=2,R=W-52,n=pts.length-1,lo=Math.min(...pts),hi=Math.max(...pts),pad=(hi-lo)*.12||Math.max(1,Math.abs(hi)*.01);
+    const X=i=>L+i*(R-L)/n,Y=p=>B-(p-(lo-pad))/((hi+pad)-(lo-pad))*(B-T); const line=pts.map((p,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(p).toFixed(1)).join(' ');
+    svg.innerHTML=[lo,(lo+hi)/2,hi].map(t=>`<line x1="${L}" x2="${R}" y1="${Y(t).toFixed(1)}" y2="${Y(t).toFixed(1)}" stroke="rgba(150,180,255,.12)" stroke-dasharray="2 3"/><text x="${R+5}" y="${(Y(t)+4).toFixed(1)}" fill="#9aa6bf" font-size="10" font-family="Geist Mono,monospace">${fmtY(t)}</text>`).join('')
+      +`<path d="${line} L${X(n)} ${B} L${L} ${B} Z" fill="${col}" fill-opacity=".12"/><path d="${line}" fill="none" stroke="${col}" stroke-width="1.7"/><circle cx="${X(n)}" cy="${Y(pts[n]).toFixed(1)}" r="3.5" fill="${col}"/>`
+      +`<text x="${L}" y="127" fill="#9aa6bf" font-size="10" font-family="Geist Mono,monospace">${labels[0]}</text><text x="${R}" y="127" fill="#9aa6bf" font-size="10" text-anchor="end" font-family="Geist Mono,monospace">${labels[1]}</text>`; }
+  const kfmt=t=>Math.abs(t)>=1000?'$'+(t/1000).toFixed(1)+'k':fmt(t);
+  function drawCash(){ const cur=cash(),inc=incM(),bm=burnM(),d=[]; for(let i=1;i<=30;i++){const day=new Date(Date.now()-(30-i)*864e5).getDate(); let v=-bm/30.4; if(day===1||day===15) v+=inc/2; v+=Math.sin(i*2.1)*inc*.004; d.push(v);}
+    let v=cur-d.reduce((a,b)=>a+b,0); const pts=[v]; d.forEach(x=>{v+=x;pts.push(v);}); lineChart('cashChart',pts,['30d ago','today'],'#5af78e',kfmt); }
+
+  // CREDIT
+  function tileCredit(h){ const l=h.line;
+    if(!l||l.type==='None') return head(h,'none','no line')+`<span class="sub2">no line of credit</span><span class="bal num" style="color:var(--g3)">—</span>`;
+    const rv=REVOLVING.includes(l.type),u=lineUse(l),ok=rv?u<=.3:true,p=Math.min(100,Math.round(u*100));
+    return head(h,ok?'ok':'bad',ok?'healthy':'over 30% used')+`<span class="sub2">${esc(l.name)}</span><span class="bal num">${fmt(l.bal)}</span><span class="ln alw">${esc(l.type)} · of ${fmt(l.limit)}</span><div class="track"><div class="fill" style="width:${p}%;background:${!rv?'#9aa6bf':p<=30?'#5af78e':p<=60?'#d2ab3a':'#ff6b5e'}"></div></div><span class="ln alw">${l.apr}% APR${l.pay?` · ${fmt(l.pay)}/mo`:''}</span>`; }
+  function coreCredit(){ const rv=revolving(),rb=rv.reduce((a,h)=>a+h.line.bal,0),rl=rv.reduce((a,h)=>a+h.line.limit,0),u=rl?rb/rl:0,pay=S.houses.reduce((a,h)=>a+(h.line?h.line.pay:0),0);
+    return `<div class="core"><div style="display:flex;justify-content:space-between;gap:8px"><span class="lbl" style="color:var(--silver)">Bull 13 · Credit line</span><span class="meta">all 12 Houses</span></div>
+      <div><span class="big num">${fmt(owed())}</span> <span class="meta">owed in total</span></div>
+      <div class="k3"><div><span class="lbl">Card use</span><b class="${u<=.3?'up':'dn'} num">${Math.round(u*100)}%</b><span class="meta">${fmt(rb)} of ${fmt(rl)}</span></div><div><span class="lbl">Payments</span><b class="num">${fmt(pay)}</b><span class="meta">per month</span></div><div><span class="lbl">Room left</span><b class="num">${fmt(rl-rb)}</b><span class="meta">on revolving lines</span></div></div>
+      <svg id="creditChart" viewBox="0 0 400 130" role="img" aria-label="Percent used per House"></svg><span class="meta">percent used, H01 to H12 · dashed line = 30%</span></div>`; }
+  function drawCredit(){ const svg=$('creditChart'); if(!svg) return; const W=400,B=108,T=8,L=4,R=W-8,bw=(R-L)/12,Y=v=>B-v*(B-T);
+    svg.innerHTML=S.houses.map((h,i)=>{const l=h.line,has=l&&l.type!=='None',u=has&&l.limit?Math.min(1,l.bal/l.limit):0,rv=has&&REVOLVING.includes(l.type),col=!has?'#4b5670':!rv?'#9aa6bf':u<=.3?'#5af78e':u<=.6?'#d2ab3a':'#ff6b5e',x=L+i*bw+3,w=bw-6,y=Y(Math.max(u,.01));
+      return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${(B-y).toFixed(1)}" rx="2" fill="${col}"/><text x="${(x+w/2).toFixed(1)}" y="124" fill="#9aa6bf" font-size="9" text-anchor="middle" font-family="Geist Mono,monospace">${String(h.id).padStart(2,'0')}</text>`;}).join('')+`<line x1="${L}" x2="${R}" y1="${Y(.3)}" y2="${Y(.3)}" stroke="#d2ab3a" stroke-dasharray="3 3" stroke-width="1"/>`; }
+
+  // CRYPTO
+  function tileCrypto(h){ const v=hcv(h),b=hbasis(h);
+    if(v<.005) return head(h,'none','no crypto')+`<span class="sub2">no crypto yet</span><span class="bal num" style="color:var(--g3)">$0</span><span class="ln alw">tap to buy for this House</span>`;
+    const top=Object.keys(h.coins).filter(k=>h.coins[k]>0).sort((a,c)=>h.coins[c]*PRICES[c]-h.coins[a]*PRICES[a]),ok=v>=b*.995,d0=Object.keys(h.coins).reduce((a,k)=>a+h.coins[k]*HIST[k]['1D'][0],0),r=d0?(v-d0)/d0:0;
+    return head(h,ok?'ok':'bad',ok?'up since bought':'down since bought')+`<span class="sub2">${top.join(' · ')}</span><span class="bal num">${fmt(v)}</span><span class="ln ${v-b>=0?'in':'burn'}">${v-b>=0?'+':''}${fmt(v-b)} since bought</span><span class="ln alw">${r>=0?'+':'−'}${Math.abs(r*100).toFixed(2)}% today</span>`; }
+  function coreCrypto(){ const v=cryptoVal(),b=S.houses.reduce((a,h)=>a+hbasis(h),0),d0=Object.keys(PRICES).reduce((a,k)=>a+tq(k)*HIST[k]['1D'][0],0),dd=v-d0;
+    return `<div class="core"><div style="display:flex;justify-content:space-between;gap:8px"><span class="lbl" style="color:var(--copper)">Bull 13 · Crypto line</span><span class="meta">all 12 Houses</span></div>
+      <div><span class="big num">${fmt(v)}</span> <span class="meta">family portfolio</span></div>
+      <div class="k3"><div><span class="lbl">Today</span><b class="${dd>=0?'up':'dn'} num">${dd>=0?'+':''}${fmt(dd)}</b><span class="meta">${d0?((dd/d0)*100).toFixed(2):'0.00'}%</span></div><div><span class="lbl">Since bought</span><b class="${v-b>=0?'up':'dn'} num">${v-b>=0?'+':''}${fmt(v-b)}</b><span class="meta">cost ${fmt(b)}</span></div><div><span class="lbl">Houses</span><b class="num">${S.houses.filter(h=>hcv(h)>=.005).length} / 12</b><span class="meta">holding crypto</span></div></div>
+      <svg id="cryptoChart" viewBox="0 0 400 130" role="img" aria-label="Portfolio value, last 24 hours"></svg><span class="meta">portfolio value · last 24h · practice prices</span></div>`; }
+  function drawCrypto(){ const n=HIST.BTC['1D'].length,pts=[]; for(let i=0;i<n;i++) pts.push(Object.keys(PRICES).reduce((a,k)=>a+tq(k)*HIST[k]['1D'][i],0)); lineChart('cryptoChart',pts,['24h ago','now'],pts[n-1]>=pts[0]?'#5af78e':'#ff7b6e',kfmt); }
+
+  /* ---------- status ---------- */
+  function renderStatus(){ $('sCash').textContent=fmt(cash()); $('sOwed').textContent=fmt(owed()); $('sCrypto').textContent=fmt(cryptoVal()); $('sRate').textContent=fmt(perHr(incM()));
+    if(document.activeElement!==$('famName')) $('famName').value=S.family; $('cardName').textContent=S.family.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); }
+
+  /* ---------- CASH extras ---------- */
+  function dueItems(){ const r=S.round||0,out=[];
+    S.houses.forEach(h=>{ if(h.allow&&h.allow.amt>0){ const e=h.allow.every,due=e==='week'||(e==='2weeks'&&r%2===0)||(e==='month'&&r%4===0); out.push({kind:'house',h,amt:h.allow.amt,label:`${hid(h.id)} ${h.type}`,every:EVERY[e],due}); }});
+    S.kids.forEach(k=>{ if(k.weekly>0) out.push({kind:'kid',k,amt:k.weekly,label:`Scout ${k.name}`,every:'week',pts:true,due:true}); }); return out; }
+  function renderCash(){ board('boardCash',tileCash,coreCash); drawCash();
+    const items=dueItems(),tot=items.filter(x=>x.due).reduce((a,x)=>a+x.amt,0);
+    $('schedule').innerHTML=items.length?items.map(x=>`<div class="li"><span>${esc(x.label)} <span class="meta">/ ${x.every}</span></span><span class="a num ${x.due?'':'meta'}">${x.due?'':'skip · '}${x.pts?x.amt+' pts':fmt(x.amt)}</span></div>`).join('')+`<div class="li"><span style="color:var(--g)">this round total</span><span class="a num" style="color:var(--g)">${fmt(tot)}</span></div>`:'<p class="empty">No allowances set. Tap a House to give it one.</p>';
+    $('nextRun').textContent='next: '+new Date(S.nextRun).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+    $('activity').innerHTML=S.activity.length?S.activity.map(x=>`<div class="li"><span><span class="meta">${new Date(x.at).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})}</span> ${esc(x.t)}</span><span class="a num ${x.k==='out'?'dn':x.k==='in'?'up':''}">${x.k==='out'?'−':x.k==='in'?'+':''}${fmt(x.a).replace('−','')}</span></div>`).join(''):'<p class="empty">No activity yet. Pay this round or move money.</p>'; }
+
+  /* ---------- CREDIT extras ---------- */
+  const houseOpts=sel=>S.houses.map(h=>`<option value="${h.id}"${+sel===h.id?' selected':''}>${hid(h.id)} ${esc(h.type)}</option>`).join('');
+  function renderCredit(){ board('boardCredit',tileCredit,coreCredit); drawCredit();
+    $('linesCount').textContent=S.houses.filter(h=>h.line&&h.line.type!=='None').length+' active of 12';
+    $('linesBody').innerHTML=S.houses.map(h=>{const l=h.line; if(!l||l.type==='None') return `<tr><td class="num">${hid(h.id)}</td><td class="meta" style="font-weight:400">no line</td><td class="meta">—</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
+      const p=Math.min(100,Math.round(lineUse(l)*100)),rv=REVOLVING.includes(l.type),col=!rv?'#9aa6bf':p<=30?'#5af78e':p<=60?'#d2ab3a':'#ff6b5e';
+      return `<tr><td class="num">${hid(h.id)}</td><td>${esc(l.name)}</td><td class="meta">${esc(l.type)}</td><td class="r num">${fmt(l.bal)}</td><td class="r num">${fmt(l.limit)}</td><td class="num"><span class="ubar"><i style="width:${p}%;background:${col}"></i></span>${p}%</td><td class="r num">${l.apr}%</td><td class="r num">${fmt(l.pay)}</td><td class="num">${esc(l.due||'—')}</td></tr>`;}).join('');
+    const v=$('lHouse').value; $('lHouse').innerHTML=houseOpts(v||1);
+    const lim=S.cards.reduce((a,c)=>a+c.limit,0),sp=S.cards.reduce((a,c)=>a+c.spent,0),pc=lim?Math.round(sp/lim*100):0;
+    $('creditSum').innerHTML=`<div><span class="lbl">Room left on House cards</span><div class="big num">${fmt(lim-sp)}</div><span class="meta">${fmt(sp)} spent of ${fmt(lim)} across ${S.cards.length} cards</span></div><div class="track"><div class="fill" style="width:${pc}%;background:var(--gold)"></div></div><span class="meta">House cards are debit: they spend a House's cash, so they don't add to what the family owes.</span>`;
+    $('cardList').innerHTML=S.cards.map(c=>{const h=H(c.house),p=Math.min(100,Math.round(c.spent/c.limit*100));
+      return `<div class="pane"><div class="bar"><b>•••• ${c.last4} · ${esc(c.holder)}</b><span class="${c.frozen?'frz':''}">${c.frozen?'FROZEN':'ACTIVE'}</span></div><div class="body">
+      <div class="li" style="border:0;padding:0"><span>spends from ${hid(h.id)} ${esc(h.type)}</span><span class="num">${fmt(h.bal)}</span></div>
+      <div class="track"><div class="fill" style="width:${p}%"></div></div><span class="meta">${fmt(c.spent)} of ${fmt(c.limit)} this month</span>
+      <div class="pair"><button class="pill ${c.frozen?'blue':'ghost'} sm" data-freeze="${c.id}">${c.frozen?'Unfreeze':'Freeze'}</button><button class="pill red sm" data-swipe="${c.id}">Practice swipe $20</button></div><p class="msg" id="cm${c.id}" role="status"></p></div></div>`;}).join('');
+    const cv=$('cHouse').value; $('cHouse').innerHTML=houseOpts(cv||4);
+    const CC=[{id:'creditkarma',name:'Credit Karma',url:'https://www.creditkarma.com',what:'Free credit scores and report monitoring.'},{id:'smartcredit',name:'SmartCredit',url:'https://www.smartcredit.com',what:'Credit reports, scores and tools to act on them.'}];
+    $('creditConn').innerHTML=CC.map(c=>{const on=!!S.conns[c.id];return `<div class="cn${on?' on':''}"><div class="cnh"><span class="cnn">${c.name}</span><span class="cat">Credit</span></div><p>${c.what}</p><span class="st">${on?'● connected · demo':'○ not connected'}</span><div class="pair"><button class="pill ${on?'ghost':'blue'} sm" data-conn="${c.id}">${on?'Disconnect':'Connect'}</button><a class="meta" href="${c.url}" target="_blank" rel="noopener">Visit site ↗</a></div></div>`;}).join(''); }
+
+  /* ---------- CRYPTO extras ---------- */
+  let cxSel='BTC',cxRange='1D',cxSide='buy',cxH=2,chartPts=[];
+  const pfmt=(k,v)=>k==='USDC'?'$'+v.toFixed(4):'$'+(v>=100?v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):v.toFixed(4));
+  const qty=(k,v)=>k==='USDC'?v.toFixed(2):v.toFixed(6);
+  const ch=k=>{const h=HIST[k]['1D'];return (PRICES[k]-h[0])/h[0];};
+  const pct=r=>(r>=0?'+':'−')+Math.abs(r*100).toFixed(2)+'%';
+  function spark(k){const h=HIST[k]['1D'],lo=Math.min(...h),hi=Math.max(...h),up=h[h.length-1]>=h[0];return `<svg class="spark" viewBox="0 0 64 24" aria-hidden="true"><polyline points="${h.map((v,i)=>`${(i/(h.length-1)*64).toFixed(1)},${(22-(v-lo)/((hi-lo)||1)*20).toFixed(1)}`).join(' ')}" fill="none" stroke="${up?'#5af78e':'#ff7b6e'}" stroke-width="1.3"/></svg>`;}
+  function renderCxList(){ $('cxList').innerHTML=Object.keys(ASSETS).map(k=>{const r=ch(k),q=tq(k);return `<button class="arow" data-a="${k}" aria-pressed="${k===cxSel}"><span class="tick">${k}</span><span style="min-width:0"><span class="an">${ASSETS[k].name}</span><span class="meta">${q?qty(k,q)+' family-wide':'—'}</span></span>${spark(k)}<span class="ap num"><span style="display:block;color:var(--ink)">${pfmt(k,PRICES[k])}</span><span class="${r>=0?'up':'dn'}" style="font-size:.75rem">${pct(r)}</span></span></button>`;}).join(''); }
+  function renderCxChart(){ const k=cxSel,h=HIST[k][cxRange],B=196,T=12,L=4,R=516,lo=Math.min(...h),hi=Math.max(...h),pad=(hi-lo)*.08||PRICES[k]*.001,up=h[h.length-1]>=h[0],col=up?'#5af78e':'#ff7b6e';
+    const X=i=>L+i*(R-L)/(h.length-1),Y=v=>B-(v-(lo-pad))/((hi+pad)-(lo-pad))*(B-T); chartPts=h.map((v,i)=>({x:X(i),v,i,n:h.length}));
+    const d=h.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)).join(' ');
+    $('cxChart').innerHTML=[lo,(lo+hi)/2,hi].map(t=>`<line x1="${L}" x2="${R}" y1="${Y(t).toFixed(1)}" y2="${Y(t).toFixed(1)}" stroke="rgba(150,180,255,.12)" stroke-dasharray="2 3"/><text x="${R+6}" y="${(Y(t)+4).toFixed(1)}" fill="#9aa6bf" font-size="11" font-family="Geist Mono,monospace">${pfmt(k,t)}</text>`).join('')
+      +`<path d="${d} L${X(h.length-1)} ${B} L${L} ${B} Z" fill="${col}" fill-opacity=".1"/><path d="${d}" fill="none" stroke="${col}" stroke-width="1.8"/><circle cx="${X(h.length-1)}" cy="${Y(h[h.length-1]).toFixed(1)}" r="4" fill="${col}"/><line id="cxCross" x1="0" x2="0" y1="${T}" y2="${B}" stroke="rgba(150,180,255,.5)" stroke-dasharray="3 3" visibility="hidden"/>`
+      +`<text x="${L}" y="214" fill="#9aa6bf" font-size="11" font-family="Geist Mono,monospace">${{'1D':'24h ago','1W':'7d ago','1M':'30d ago','1Y':'1y ago'}[cxRange]}</text><text x="${R}" y="214" fill="#9aa6bf" font-size="11" text-anchor="end" font-family="Geist Mono,monospace">now</text>`;
+    const r=(h[h.length-1]-h[0])/h[0],hh=H(cxH),q=hh.coins[k]||0,val=q*PRICES[k],b=hh.basis[k]||0;
+    $('cxName').textContent=`${ASSETS[k].name} · ${k}`; $('cxPrice').textContent=pfmt(k,PRICES[k]); $('cxChg').innerHTML=`<span class="${r>=0?'up':'dn'}">${pct(r)}</span> ${cxRange}`;
+    $('cxStats').innerHTML=`<div><span class="lbl">${hid(cxH)} cash</span><b>${fmt(hh.bal)}</b></div><div><span class="lbl">${hid(cxH)} holds</span><b>${qty(k,q)} ${k}</b></div><div><span class="lbl">Value · return</span><b>${fmt(val)} <span class="${val-b>=0?'up':'dn'}">${q?(val-b>=0?'+':'')+fmt(val-b):''}</span></b></div><div><span class="lbl">Range</span><b>${pfmt(k,lo)} – ${pfmt(k,hi)}</b></div>`; }
+  const chart=$('cxChart'),hov=$('cxHover');
+  chart.addEventListener('pointermove',e=>{ if(!chartPts.length) return; const rc=chart.getBoundingClientRect(),x=(e.clientX-rc.left)/rc.width*600; let p=chartPts[0]; for(const q of chartPts) if(Math.abs(q.x-x)<Math.abs(p.x-x)) p=q;
+    const c=$('cxCross'); if(c){c.setAttribute('x1',p.x);c.setAttribute('x2',p.x);c.setAttribute('visibility','visible');}
+    const span={'1D':1440,'1W':10080,'1M':43200,'1Y':525600}[cxRange],when=new Date(Date.now()-(p.n-1-p.i)/(p.n-1)*span*6e4);
+    hov.hidden=false; hov.textContent=pfmt(cxSel,p.v)+' · '+when.toLocaleString('en-US',cxRange==='1D'||cxRange==='1W'?{weekday:'short',hour:'numeric',minute:'2-digit'}:{month:'short',day:'numeric',year:cxRange==='1Y'?'numeric':undefined}); hov.style.left=Math.min(rc.width-190,Math.max(0,p.x/600*rc.width-60))+'px'; });
+  chart.addEventListener('pointerleave',()=>{hov.hidden=true;const c=$('cxCross');if(c)c.setAttribute('visibility','hidden');});
+  function renderCxTrade(){ const k=cxSel,a=r2(+$('cxAmt').value||0),fee=r2(a*.01),to=$('cxTo').value,hh=H(cxH);
+    $('cxToWrap').hidden=cxSide!=='convert'; $('cxFreqWrap').hidden=cxSide!=='buy';
+    document.querySelectorAll('#cxSide button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===cxSide));
+    $('cxTo').innerHTML=Object.keys(ASSETS).filter(x=>x!==k).map(x=>`<option value="${x}">${ASSETS[x].name} (${x})</option>`).join(''); if(to&&to!==k) $('cxTo').value=to;
+    const t=$('cxTo').value,wk=$('cxFreq').value==='weekly';
+    $('cxPreview').innerHTML=cxSide==='buy'?`<div><span>from ${hid(cxH)} ${esc(hh.type)} cash</span><b>${fmt(a)}</b></div><div><span>practice fee 1%</span><b>${fmt(fee)}</b></div><div><span>${hid(cxH)} gets</span><b>${qty(k,Math.max(0,a-fee)/PRICES[k])} ${k}</b></div>${wk?'<div><span>repeats</span><b>every allowance round</b></div>':''}`
+      :cxSide==='sell'?`<div><span>${hid(cxH)} sells</span><b>${qty(k,a/PRICES[k])} ${k}</b></div><div><span>practice fee 1%</span><b>${fmt(fee)}</b></div><div><span>back to ${hid(cxH)} cash</span><b>${fmt(Math.max(0,a-fee))}</b></div>`
+      :`<div><span>${hid(cxH)} converts</span><b>${qty(k,a/PRICES[k])} ${k}</b></div><div><span>practice fee 1%</span><b>${fmt(fee)}</b></div><div><span>${hid(cxH)} gets</span><b>${qty(t,Math.max(0,a-fee)/PRICES[t])} ${t}</b></div>`;
+    $('cxGo').textContent=(!S.cryptoOK&&cxSide==='buy')?'Unlock buying':cxSide==='buy'?`${wk?'Repeat ':'Buy '}${fmt(a)} ${k}`:cxSide==='sell'?`Sell ${fmt(a)} ${k}`:`Convert to ${t}`; }
+  function renderCxRecurring(){ $('cxRecurring').innerHTML=S.recurring.length?S.recurring.map((r,i)=>`<div class="li"><span>${hid(r.h)} ${esc(H(r.h).type)} · ${fmt(r.amt)} of ${ASSETS[r.k].name}</span><button class="pill ghost sm" data-stop="${i}">Stop</button></div>`).join(''):'<p class="empty">None yet. Choose "Every allowance round" when you buy.</p>'; }
+  function renderCrypto(){ board('boardCrypto',tileCrypto,coreCrypto); drawCrypto(); $('cxHouse').innerHTML=houseOpts(cxH); renderCxList(); renderCxChart(); renderCxTrade(); renderCxRecurring(); }
+  function buy(h,k,a){ const fee=r2(a*.01); h.bal=r2(h.bal-a); h.coins[k]+=(a-fee)/PRICES[k]; h.basis[k]=r2((h.basis[k]||0)+a); }
+
+  /* ---------- MOVE ---------- */
+  const CONNECTORS=[{id:'robinhood',name:'Robinhood',cat:'Investing',what:'Stocks, ETFs and options account.'},{id:'webull',name:'Webull',cat:'Investing',what:'Trading account with extended hours.'},{id:'coinbase',name:'Coinbase',cat:'Crypto',what:'Crypto exchange and wallet.'},{id:'tradingview',name:'TradingView',cat:'Research',what:'Charts, indicators and watchlists.'},{id:'quiver',name:'Quiver Quantitative',cat:'Research',what:'Alternative data such as congressional trades.'},{id:'discord',name:'Discord',cat:'Community',what:'Family or investing club chat channels.'},{id:'plaid',name:'Plaid',cat:'Banking',what:'Link outside bank accounts to the Houses.'},{id:'stripe',name:'Stripe',cat:'Payments',what:'Take payments for the Family Business.'},{id:'paypal',name:'PayPal',cat:'Payments',what:'Send and receive with PayPal.'},{id:'cashapp',name:'Cash App',cat:'Payments',what:'Pay friends and family.'},{id:'venmo',name:'Venmo',cat:'Payments',what:'Split costs and send money.'},{id:'quickbooks',name:'QuickBooks',cat:'Books',what:'Bookkeeping for the Family Business House.'}];
+  let connCat='All';
+  function renderMove(){ const opts=S.houses.map(h=>`<option value="${h.id}">${hid(h.id)} ${esc(h.type)} (${fmt(h.bal)})</option>`).join(''); const f=$('from').value,t=$('to').value; $('from').innerHTML=opts; $('to').innerHTML=opts; $('from').value=f||'1'; $('to').value=t||'8';
+    $('moveGo').textContent='Move '+fmt(+$('amt').value||0);
+    $('connFilters').innerHTML=['All',...new Set(CONNECTORS.map(c=>c.cat))].map(c=>`<button class="chip" data-cat="${c}" aria-pressed="${c===connCat}">${c}</button>`).join('');
+    $('connList').innerHTML=CONNECTORS.filter(c=>connCat==='All'||c.cat===connCat).map(c=>{const on=!!S.conns[c.id];return `<div class="cn${on?' on':''}"><div class="cnh"><span class="cnn">${c.name}</span><span class="cat">${c.cat}</span></div><p>${c.what}</p><span class="st">${on?'● connected · demo':'○ not connected'}</span><div class="pair"><button class="pill ${on?'ghost':'blue'} sm" data-conn="${c.id}">${on?'Disconnect':'Connect'}</button></div></div>`;}).join('');
+    $('connCount').textContent=CONNECTORS.filter(c=>S.conns[c.id]).length+' / '+CONNECTORS.length+' connected'; }
+
+  /* ---------- POINTS ---------- */
+  function wishProgress(k){ let left=k.points; return k.wishes.map(w=>{const put=Math.max(0,Math.min(w.cost,left)); left-=put; return {...w,saved:put,pct:Math.round(put/w.cost*100)};}); }
+  function renderPoints(){ const tp=S.kids.reduce((a,k)=>a+k.points,0); $('ptsTotal').textContent=`${S.kids.length} scouts · ${tp} pts · ${fmt(tp)}`;
+    $('kidTable').innerHTML=S.kids.map(k=>{const w=wishProgress(k)[0];return `<tr><td><b>${esc(k.name)}</b></td><td class="num">${k.points}</td><td class="num">${fmt(k.points)}</td><td>${w?esc(w.name):'<span class="meta">no wish yet</span>'}</td><td class="num">${w?`${w.pct}% <span class="meta">of ${fmt(w.cost)}</span>`:'—'}</td><td class="num">${k.weekly} pts</td></tr>`;}).join('')||'<tr><td colspan="6" class="empty">No scouts yet.</td></tr>';
+    $('kids').innerHTML=S.kids.map(k=>{const ws=wishProgress(k);return `<div class="pane"><div class="bar"><b>${esc(k.name)}</b><span>scout</span></div><div class="body">
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:end;flex-wrap:wrap"><div><span class="lbl">Points</span><div class="pts num">${k.points}</div></div><div style="text-align:right"><span class="lbl">Value</span><div class="pts num" style="font-size:1.5rem">${fmt(k.points)}</div></div></div>
+      <div><span class="lbl">Wish list</span>${ws.length?ws.map((w,i)=>`<div class="wish"><div class="wh"><span>${i+1}. ${esc(w.name)}</span><span class="num">${fmt(w.saved)} / ${fmt(w.cost)}</span></div><div class="track"><div class="fill" style="width:${w.pct}%"></div></div><div class="wa">${i>0?`<button data-top="${k.id}:${i}">Save for this first</button>`:'<span class="meta">saving now</span>'}<button data-delwish="${k.id}:${i}">Remove</button></div></div>`).join(''):'<p class="empty">No wishes yet.</p>'}</div>
+      <form class="row" data-addwish="${k.id}"><div class="field"><label for="wn${k.id}">Add a wish</label><input id="wn${k.id}" type="text" maxlength="30" placeholder="What they want"></div><div class="field" style="flex:0 1 100px"><label for="wc${k.id}">Cost $</label><input id="wc${k.id}" type="number" min="1" value="100"></div><button class="pill red sm" type="submit">Add wish</button></form>
+      <div style="border-top:1px dashed var(--line);padding-top:10px;display:grid;gap:8px"><span class="lbl">Payout</span>
+        <form class="row" data-pay="${k.id}"><div class="field" style="flex:0 1 90px"><label for="pp${k.id}">Points</label><input id="pp${k.id}" type="number" min="1" value="5"></div><div class="field"><label for="pr${k.id}">For</label><select id="pr${k.id}"><option>Chores</option><option>Homework</option><option>Report card</option><option>Kindness</option><option>Reading</option><option>Other</option></select></div><button class="pill red sm" type="submit">Pay out</button></form>
+        <div class="row"><div class="field" style="flex:0 1 150px"><label for="wk${k.id}">Weekly allowance</label><input id="wk${k.id}" type="number" min="0" value="${k.weekly}" data-weekly="${k.id}"></div><button class="pill ghost sm" data-cash="${k.id}">Cash out 10 pts</button></div>
+        <p class="msg" id="km${k.id}" role="status"></p></div></div></div>`;}).join(''); }
+
+  function mxCash(h){ const ok=(+h.inc||0)+allowMo(h)>=(+h.burn||0); return {st:ok?'ok':'bad',v:fmt(h.bal),s:h.burn?`burn ${fmt(h.burn)}/mo`:h.inc?`in ${fmt(h.inc)}/mo`:'no burn'}; }
+  function mxCredit(h){ const l=h.line; if(!l||l.type==='None') return {st:'none',v:'—',s:'no line'}; const rv=REVOLVING.includes(l.type),u=lineUse(l); return {st:rv&&u>.3?'bad':'ok',v:fmt(l.bal),s:`${l.type}${rv?' · '+Math.round(u*100)+'%':''}`}; }
+  function mxCrypto(h){ const v=hcv(h),b=hbasis(h); if(v<.005) return {st:'none',v:'$0',s:'none yet'}; return {st:v>=b*.995?'ok':'bad',v:fmt(v),s:Object.keys(h.coins).filter(k=>h.coins[k]>0).join(' · ')}; }
+  function mxCell(k,h,c){ return `<td><button class="c" data-mx="${k}" data-h="${h}">${bullSvg(c.st,c.st==='ok'?'healthy':c.st==='bad'?'needs attention':'empty')}<span><span class="v">${c.v}</span><span class="s">${esc(c.s)}</span></span></button></td>`; }
+  function renderMatrix(){ const rv=revolving(),rb=rv.reduce((a,h)=>a+h.line.bal,0),rl=rv.reduce((a,h)=>a+h.line.limit,0),cv=cryptoVal(),cb=S.houses.reduce((a,h)=>a+hbasis(h),0);
+    $('mxBody').innerHTML=S.houses.map(h=>`<tr><td class="hcell"><span>${hid(h.id)}</span>${esc(h.type)}</td>${mxCell('cash',h.id,mxCash(h))}${mxCell('credit',h.id,mxCredit(h))}${mxCell('crypto',h.id,mxCrypto(h))}</tr>`).join('')
+     +`<tr class="tot"><td class="hcell"><span>B13</span>Whole economy</td>${mxCell('cash',0,{st:incM()>=burnM()?'ok':'bad',v:fmt(cash()),s:`${fmt(perHr(incM()))}/hr made`})}${mxCell('credit',0,{st:rl&&rb/rl>.3?'bad':'ok',v:fmt(owed()),s:`owed · cards ${rl?Math.round(rb/rl*100):0}% used`})}${mxCell('crypto',0,{st:cv>=cb*.995?'ok':'bad',v:fmt(cv),s:`${cv-cb>=0?'+':''}${fmt(cv-cb)} since bought`})}</tr>`; }
+  function renderAll(){ renderStatus(); renderMatrix(); renderCash(); renderCredit(); renderCrypto(); renderMove(); renderPoints(); save(); }
+
+  /* ---------- Kings ---------- */
+  const KINGS={cash:{name:'King Cash',glyph:'♔',tone:'gold',tag:'gold · 12 cash lines',pitch:.85,hello:"I keep the cash lines for all twelve Houses. Ask me what we make, what we burn, or where the money should go next.",sugg:['How much do we make an hour?','Which House burns the most?','Can we afford a $300 surprise?']},
+    credit:{name:'King Credit',glyph:'♕',tone:'silver',tag:'silver · 12 credit lines',pitch:1,hello:"I watch the credit line in every House. Ask me what we owe, which card runs hot, or how credit works.",sugg:['What do we owe in total?','Which House line is over 30%?','How does utilization work?']},
+    crypto:{name:'King Crypto',glyph:'♚',tone:'copper',tag:'copper · 12 crypto lines',pitch:1.15,hello:"I keep each House's practice crypto. Ask me what the family holds or how this market moves. I teach; I don't tell you what to buy.",sugg:['What does each House hold?','Why does Bitcoin swing so much?','What is a stablecoin?']}};
+  let KING='cash'; const chats={cash:[],credit:[],crypto:[]}; let voiceOn=true,ctl=null;
+  const TONE={cash:'gold',credit:'silver',crypto:'copper'};
+  let sampleFn=null,aiOff=false;
+  (async()=>{ try{ if(window.claude&&window.claude.use) sampleFn=await window.claude.use('sample'); }catch(e){ sampleFn=null; } })();
+  function kingData(k){
+    if(k==='cash') return `Cash: total ${fmt(cash())}; makes ${fmt(perHr(incM()))}/hour (${fmt(incM())}/mo); burns ${fmt(perHr(burnM()))}/hour (${fmt(burnM())}/mo); runway ${burnM()?(cash()/burnM()).toFixed(1)+' months':'n/a'}.\n`+S.houses.map(h=>`${hid(h.id)} ${h.type}: cash ${fmt(h.bal)}, in ${fmt(h.inc)}/mo, burn ${fmt(h.burn)}/mo${h.allow?`, allowance ${fmt(h.allow.amt)} every ${EVERY[h.allow.every]}`:''}`).join('\n');
+    if(k==='credit') return `Credit: total owed ${fmt(owed())}.\n`+S.houses.map(h=>h.line&&h.line.type!=='None'?`${hid(h.id)} ${h.type}: ${h.line.name} (${h.line.type}) balance ${fmt(h.line.bal)} of ${fmt(h.line.limit)}, ${Math.round(lineUse(h.line)*100)}% used, APR ${h.line.apr}%, payment ${fmt(h.line.pay)}/mo`:`${hid(h.id)} ${h.type}: no line`).join('\n')+`\nHouse debit cards: ${S.cards.map(c=>`${c.holder} ${fmt(c.spent)} of ${fmt(c.limit)}${c.frozen?' (frozen)':''}`).join('; ')}`;
+    return `Practice crypto (pretend money). Family total ${fmt(cryptoVal())}. Prices: ${Object.keys(PRICES).map(x=>`${x} ${pfmt(x,PRICES[x])} (${pct(ch(x))} 24h)`).join(', ')}.\n`+S.houses.map(h=>{const v=hcv(h);return `${hid(h.id)} ${h.type}: ${v<.005?'none':Object.keys(h.coins).filter(x=>h.coins[x]>0).map(x=>`${qty(x,h.coins[x])} ${x}`).join(', ')+` worth ${fmt(v)} (cost ${fmt(hbasis(h))})`}`;}).join('\n');
+  }
+  const rules=k=>`You are ${KINGS[k].name} in makeCENTS, home economics for the Universal Family Office. The family's money runs through 12 Houses (departments); each House has a cash line, a credit line and a crypto line, and Bull 13 is the total. Speak warmly and plainly to a parent running her household like a family office. Answer in 2 to 4 short spoken sentences, no lists, no markdown (your reply is read aloud). Use the numbers below exactly when they help. You teach; never tell anyone to buy or sell a specific investment and never give trading signals. All money here is pretend demo money.\n\nFamily data:\n${kingData(k)}`;
+  function fallback(k){
+    if(k==='cash'){const hi=[...S.houses].sort((a,b)=>b.burn-a.burn)[0];return `Your house makes ${fmt(perHr(incM()))} an hour and burns ${fmt(perHr(burnM()))} an hour, so you keep about ${fmt(perHr(incM()-burnM()))}. ${hi.type} burns the most at ${fmt(hi.burn)} a month. Insurance holds ${fmt(H(8).bal)} for surprises.`;}
+    if(k==='credit'){const hot=S.houses.filter(h=>h.line&&REVOLVING.includes(h.line.type)&&lineUse(h.line)>.3);return `The family owes ${fmt(owed())} across ${S.houses.filter(h=>h.line&&h.line.type!=='None').length} lines. ${hot.length?hot.map(h=>`${h.type}'s ${h.line.name} is ${Math.round(lineUse(h.line)*100)} percent used`).join(' and ')+', above the 30 percent rule of thumb.':'Every card is under 30 percent used.'}`;}
+    const hs=S.houses.filter(h=>hcv(h)>=.005);return `The family holds ${fmt(cryptoVal())} of practice crypto across ${hs.length} Houses. Bitcoin is at ${pfmt('BTC',PRICES.BTC)}, ${pct(ch('BTC'))} today. Prices swing hard, so each House should only use money it can afford to lose.`;
+  }
+  function kRender(){ const box=$('kmsgs'),m=chats[KING]; box.hidden=!m.length; box.innerHTML=m.map(x=>`<div class="kb ${x.role==='user'?'u':'k'}">${esc(x.content)}</div>`).join(''); box.scrollTop=box.scrollHeight; }
+  function speak(text){ if(!voiceOn||!('speechSynthesis' in window)) return; try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text),orb=$('orb'); u.pitch=KINGS[KING].pitch; u.onstart=()=>orb.classList.add('speaking'); u.onend=u.onerror=()=>orb.classList.remove('speaking'); speechSynthesis.speak(u); }catch(e){} }
+  async function ask(q){ q=q.trim(); if(!q) return; const k=KING,orb=$('orb'),go=$('kgo'); if(ctl) ctl.abort();
+    chats[k].push({role:'user',content:q}); chats[k]=chats[k].slice(-10); kRender();
+    const box=$('kmsgs'),bubble=document.createElement('div'); bubble.className='kb k'; bubble.textContent='…'; box.appendChild(bubble); box.scrollTop=box.scrollHeight; orb.classList.add('busy'); go.disabled=true;
+    let answer='';
+    if(sampleFn&&!aiOff){ const c=new AbortController(); ctl=c;
+      try{ const {text}=await sampleFn([{role:'user',content:rules(k)},...chats[k]],{cache:false,modelTier:'quick',signal:c.signal,onText:({text})=>{ if(KING===k){bubble.textContent=text;box.scrollTop=box.scrollHeight;} }}); answer=text; }
+      catch(e){ if(e&&e.code==='cancelled'){orb.classList.remove('busy');go.disabled=false;return;}
+        if(e&&['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].includes(e.code)) aiOff=true;
+        answer=(e&&e.text)||fallback(k); }
+      finally{ if(ctl===c) ctl=null; } }
+    else answer=fallback(k);
+    chats[k].push({role:'assistant',content:answer}); orb.classList.remove('busy'); go.disabled=false; if(KING===k){ kRender(); speak(answer); } }
+  function setKing(k,scroll){ KING=k; const K=KINGS[k];
+    document.querySelectorAll('.kswitch button,#dots button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.king===k));
+    const o=$('orb'); o.classList.remove('gold','silver','copper','speaking'); o.classList.add(TONE[k]);
+    $('kname').textContent=K.name; $('kname').style.color=`var(--${TONE[k]})`; $('kin').placeholder='Ask '+K.name; kRender();
+    if(scroll){ const sl=$('slider'),i=['cash','credit','crypto'].indexOf(k); sl.scrollTo({left:i*sl.clientWidth,behavior:'smooth'}); } }
+  $('kform').addEventListener('submit',e=>{ e.preventDefault(); const q=$('kin').value; $('kin').value=''; ask(q); });
+  $('kvoice').addEventListener('click',()=>{ voiceOn=!voiceOn; $('kvoice').textContent=voiceOn?'Voice on':'Voice off'; if(!voiceOn&&'speechSynthesis' in window) speechSynthesis.cancel(); });
+  document.querySelectorAll('.kswitch button,#dots button').forEach(b=>b.addEventListener('click',()=>setKing(b.dataset.king,true)));
+  let slT; $('slider').addEventListener('scroll',()=>{ clearTimeout(slT); slT=setTimeout(()=>{ const sl=$('slider'),i=Math.round(sl.scrollLeft/sl.clientWidth),k=['cash','credit','crypto'][i]; if(k&&k!==KING) setKing(k,false); },120); });
+
+  /* ---------- events ---------- */
+  const tabs=[...document.querySelectorAll('.tab')];
+  const show=v=>{ tabs.forEach(t=>t.setAttribute('aria-selected',t.dataset.v===v?'true':'false')); document.querySelectorAll('.view').forEach(x=>x.hidden=x.id!=='v-'+v); };
+  tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.v)));
+  document.addEventListener('keydown',e=>{ if(e.target.closest('input,select,textarea')||e.metaKey||e.ctrlKey||e.altKey) return; const i='12345'.indexOf(e.key); if(i>=0) show(tabs[i].dataset.v); if(e.key==='Escape') $('sheet').hidden=true; });
+  if(/^#(cash|credit|crypto|move|points)$/.test(location.hash)) show(location.hash.slice(1));
+  $('famName').addEventListener('input',e=>{ S.family=e.target.value.trim().toLowerCase().replace(/\s+/g,'-')||'my-house'; renderStatus(); save(); });
+
+  document.addEventListener('click',e=>{
+    const mx=e.target.closest('[data-mx]'); if(mx){ const k=mx.dataset.mx,h=+mx.dataset.h; setKing(k,true); const bd=$('board'+k[0].toUpperCase()+k.slice(1)); const t=h?bd.querySelector('.p'+h):bd.querySelector('.core'); $('slider').scrollIntoView({behavior:'smooth',block:'start'}); if(t){t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');} if(h&&k==='crypto'){cxH=h;renderCxChart();renderCxTrade();$('cxHouse').value=h;} return; }
+    const g=e.target.closest('[data-gotab]'); if(g){ show(g.dataset.gotab); document.querySelector('.tabs').scrollIntoView({behavior:'smooth',block:'start'}); return; }
+    const cn=e.target.closest('[data-conn]'); if(cn){ S.conns[cn.dataset.conn]=!S.conns[cn.dataset.conn]; renderAll(); return; }
+  });
+  setKing('cash',false);
+
+  let openId=null;
+  $('boardCash').addEventListener('click',e=>{ const b=e.target.closest('.house'); if(!b) return; openId=+b.dataset.h; const h=H(openId);
+    $('sheetHouse').textContent='House '+h.id+' · cash line'; $('sheetTitle').textContent=h.type; $('sheetPurpose').textContent=h.purpose; $('typeInput').value=h.type; $('incInput').value=h.inc||0; $('burnInput').value=h.burn||0;
+    $('allowRow').hidden=h.id===1; $('allowInput').value=h.allow?h.allow.amt:0; $('everyInput').value=h.allow?h.allow.every:'2weeks'; $('sheet').hidden=false; $('typeInput').focus(); });
+  $('sheetClose').addEventListener('click',()=>$('sheet').hidden=true);
+  $('sheet').addEventListener('click',e=>{ if(e.target.id==='sheet') $('sheet').hidden=true; });
+  $('sheetSave').addEventListener('click',()=>{ const h=H(openId),v=$('typeInput').value.trim(); if(v) h.type=v; h.inc=Math.max(0,+$('incInput').value||0); h.burn=Math.max(0,+$('burnInput').value||0); if(h.id!==1){const a=Math.max(0,+$('allowInput').value||0); h.allow=a?{amt:a,every:$('everyInput').value}:null;} $('sheet').hidden=true; renderAll(); });
+  $('boardCredit').addEventListener('click',e=>{ const b=e.target.closest('.house'); if(!b) return; const h=H(b.dataset.h),l=h.line||{name:'',type:'Credit card',bal:0,limit:1000,apr:22,pay:25};
+    show('credit'); $('lHouse').value=h.id; $('lName').value=l.name; $('lType').value=l.type; $('lBal').value=l.bal; $('lLim').value=l.limit; $('lApr').value=l.apr; $('lPay').value=l.pay; $('lineForm').scrollIntoView({behavior:'smooth',block:'center'}); $('lName').focus({preventScroll:true}); });
+  $('boardCrypto').addEventListener('click',e=>{ const b=e.target.closest('.house'); if(!b) return; show('crypto'); cxH=+b.dataset.h; renderCrypto(); $('trade').scrollIntoView({behavior:'smooth',block:'start'}); });
+
+  $('runSched').addEventListener('click',()=>{ const items=dueItems().filter(x=>x.due),tot=items.reduce((a,x)=>a+x.amt,0),m=$('schedMsg'),h1=H(1);
+    if(!items.length){m.className='msg';m.textContent='Nothing scheduled.';return;}
+    if(h1.bal<tot){m.className='msg err';m.textContent=`⚠ H01 has ${fmt(h1.bal)}; this round needs ${fmt(tot)}.`;return;}
+    items.forEach(x=>{ h1.bal-=x.amt; if(x.kind==='house') x.h.bal+=x.amt; else { H(12).bal+=x.amt; x.k.points+=x.amt; } }); h1.bal=r2(h1.bal); log(`allowances paid · ${items.length} lines`,tot,'move');
+    let n=0,rt=0; S.recurring.forEach(r=>{const h=H(r.h); if(h.bal>=r.amt){ buy(h,r.k,r.amt); n++; rt+=r.amt; }}); if(n) log(`recurring crypto · ${n} buys`,rt,'out');
+    S.nextRun+=7*864e5; S.round=(S.round||0)+1; renderAll(); m.className='msg ok'; m.textContent=`Paid ${fmt(tot)}${n?` · ran ${n} crypto buys`:''}.`; });
+
+  $('lineForm').addEventListener('submit',e=>{ e.preventDefault(); const h=H($('lHouse').value),t=$('lType').value;
+    if(t==='None'){ h.line=null; } else { const n=$('lName').value.trim(); if(!n){$('lName').focus();return;} h.line={name:n,type:t,bal:Math.max(0,+$('lBal').value||0),limit:Math.max(1,+$('lLim').value||1),apr:Math.max(0,+$('lApr').value||0),pay:Math.max(0,+$('lPay').value||0),due:(h.line&&h.line.due)||''}; }
+    $('lName').value=''; renderAll(); });
+  $('cardList').addEventListener('click',e=>{ const t=e.target;
+    if(t.dataset.freeze){ const c=S.cards.find(x=>x.id==t.dataset.freeze); c.frozen=!c.frozen; renderAll(); return; }
+    if(t.dataset.swipe){ const c=S.cards.find(x=>x.id==t.dataset.swipe),h=H(c.house),a=20,say=(cl,tx)=>{const m=$('cm'+c.id);m.className='msg '+cl;m.textContent=tx;};
+      if(c.frozen) return say('err','⚠ Declined: this card is frozen.'); if(c.spent+a>c.limit) return say('err',`⚠ Declined: over the ${fmt(c.limit)} limit.`); if(h.bal<a) return say('err',`⚠ Declined: ${h.type} has ${fmt(h.bal)}.`);
+      c.spent+=a; h.bal=r2(h.bal-a); log(`card ${c.last4} · ${c.holder}`,a,'out'); renderAll(); say('ok',`Approved: −$20 from ${h.type}.`); } });
+  $('cardForm').addEventListener('submit',e=>{ e.preventDefault(); const n=$('cHolder').value.trim(); if(!n){$('cHolder').focus();return;}
+    S.cards.push({id:Date.now(),holder:n,house:+$('cHouse').value,limit:Math.max(1,+$('cLimit').value||1),spent:0,frozen:false,last4:String(1000+Math.floor(Math.random()*9000))}); $('cHolder').value=''; renderAll(); });
+
+  $('cxHouse').addEventListener('change',e=>{ cxH=+e.target.value; renderCxChart(); renderCxTrade(); });
+  $('cxList').addEventListener('click',e=>{ const b=e.target.closest('[data-a]'); if(!b) return; cxSel=b.dataset.a; $('cxMsg').textContent=''; renderCxList(); renderCxChart(); renderCxTrade(); });
+  $('cxRanges').addEventListener('click',e=>{ const b=e.target.closest('[data-r]'); if(!b) return; cxRange=b.dataset.r; document.querySelectorAll('#cxRanges button').forEach(x=>x.setAttribute('aria-pressed',x===b)); renderCxChart(); });
+  $('cxSide').addEventListener('click',e=>{ const b=e.target.closest('[data-s]'); if(!b) return; cxSide=b.dataset.s; $('cxGate').hidden=true; renderCxTrade(); });
+  ['cxAmt','cxTo','cxFreq'].forEach(id=>$(id).addEventListener('input',renderCxTrade));
+  $('cxChips').addEventListener('click',e=>{ const q=e.target.dataset.q; if(!q) return; const h=H(cxH); let v=+q; if(q==='max') v=cxSide==='buy'?h.bal:Math.floor((h.coins[cxSel]||0)*PRICES[cxSel]*100)/100; $('cxAmt').value=Math.max(0,Math.floor(v*100)/100); renderCxTrade(); });
+  $('cxWhy').addEventListener('click',()=>{ $('cxWhyText').hidden=!$('cxWhyText').hidden; });
+  $('cxRecurring').addEventListener('click',e=>{ const i=e.target.dataset.stop; if(i==null) return; S.recurring.splice(+i,1); renderAll(); });
+  $('cxGate').addEventListener('click',e=>{ const b=e.target.closest('[data-gi]'); if(!b) return;
+    if(b.dataset.gi==='1'){ S.cryptoOK=true; $('cxGate').hidden=true; $('cxMsg').className='msg ok'; $('cxMsg').textContent='King Crypto unlocked. Buying is open.'; renderAll(); }
+    else { $('gmsg').className='msg err'; $('gmsg').textContent='⚠ Not quite. Read the three lines and try again.'; } });
+  $('cxGo').addEventListener('click',()=>{ const k=cxSel,h=H(cxH),a=r2(+$('cxAmt').value||0),fee=r2(a*.01),m=$('cxMsg'),say=(cl,tx)=>{m.className='msg '+cl;m.textContent=tx;};
+    if(cxSide==='buy'&&!S.cryptoOK){ const g=$('cxGate'); g.hidden=false; g.innerHTML=`<span class="lbl">Unlock King Crypto · one question</span><ol style="margin:0;padding-left:1.2em;display:grid;gap:4px;font-size:.86rem"><li>Crypto prices can swing hard in a single day.</li><li>Only use money a House can afford to lose.</li><li>USDC aims to stay at $1. Bitcoin, Ether and Solana do not.</li></ol><b style="color:var(--ink);font-weight:500">Which money should never go into crypto?</b><div><button class="opt" data-gi="0">Spare money in the Treasury</button><button class="opt" data-gi="1">Insurance (the emergency fund)</button><button class="opt" data-gi="2">A small test amount</button></div><p class="msg" id="gmsg" role="status"></p>`; return; }
+    if(!(a>0)) return say('err','⚠ Enter an amount above $0.');
+    if(cxSide==='buy'){ if(a>h.bal) return say('err',`⚠ ${h.type} has ${fmt(h.bal)} in cash. Move money into ${hid(h.id)} first.`);
+      buy(h,k,a); log(`${hid(h.id)} buy ${k}`,a,'out'); if($('cxFreq').value==='weekly') S.recurring.push({h:h.id,k,amt:a}); renderAll(); return say('ok',`${hid(h.id)} bought ${fmt(a)} of ${k} at ${pfmt(k,PRICES[k])}.`); }
+    const have=(h.coins[k]||0)*PRICES[k]; if(a>have+.005) return say('err',`⚠ ${hid(h.id)} holds ${fmt(have)} of ${k}.`);
+    const q=Math.min(h.coins[k],a/PRICES[k]),fr=h.coins[k]?q/h.coins[k]:0,bo=(h.basis[k]||0)*fr; h.coins[k]-=q; h.basis[k]=r2((h.basis[k]||0)-bo); if(h.coins[k]<1e-9){h.coins[k]=0;h.basis[k]=0;}
+    if(cxSide==='sell'){ h.bal=r2(h.bal+a-fee); log(`${hid(h.id)} sell ${k}`,a-fee,'in'); renderAll(); return say('ok',`${hid(h.id)} sold ${fmt(a)} of ${k}; ${fmt(a-fee)} back in its cash line.`); }
+    const t=$('cxTo').value; h.coins[t]+=(a-fee)/PRICES[t]; h.basis[t]=r2((h.basis[t]||0)+bo); log(`${hid(h.id)} convert ${k} → ${t}`,a,'move'); renderAll(); say('ok',`${hid(h.id)} converted into ${qty(t,(a-fee)/PRICES[t])} ${t}.`); });
+
+  $('amt').addEventListener('input',()=>{ $('moveGo').textContent='Move '+fmt(+$('amt').value||0); });
+  $('moveForm').addEventListener('submit',e=>{ e.preventDefault(); const f=H($('from').value),t=H($('to').value),a=r2(+$('amt').value||0),m=$('moveMsg'),say=(cl,tx)=>{m.className='msg '+cl;m.textContent=tx;};
+    if(f.id===t.id) return say('err','⚠ Pick two different Houses.'); if(!(a>0)) return say('err','⚠ Enter an amount above $0.'); if(a>f.bal) return say('err',`⚠ ${f.type} has ${fmt(f.bal)}.`);
+    f.bal=r2(f.bal-a); t.bal=r2(t.bal+a); log(`${f.type} → ${t.type}`,a,'move'); renderAll(); say('ok',`Moved ${fmt(a)} to ${t.type}.`); });
+  $('connFilters').addEventListener('click',e=>{ const c=e.target.dataset.cat; if(!c) return; connCat=c; renderMove(); });
+
+  $('kids').addEventListener('submit',e=>{ e.preventDefault(); const f=e.target;
+    if(f.dataset.pay){ const k=S.kids.find(x=>x.id==f.dataset.pay),n=Math.max(0,Math.floor(+$('pp'+k.id).value||0)),why=$('pr'+k.id).value; if(!n) return;
+      if(H(1).bal<n){ $('km'+k.id).className='msg err'; $('km'+k.id).textContent='⚠ H01 needs more money to fund points.'; return; }
+      H(1).bal-=n; H(12).bal+=n; k.points+=n; log(`${k.name} +${n} pts · ${why.toLowerCase()}`,n,'move'); renderAll(); $('km'+k.id).className='msg ok'; $('km'+k.id).textContent=`+${n} points for ${why.toLowerCase()}.`; }
+    if(f.dataset.addwish){ const k=S.kids.find(x=>x.id==f.dataset.addwish),n=$('wn'+k.id).value.trim(),c=Math.max(1,+$('wc'+k.id).value||1); if(!n){$('wn'+k.id).focus();return;} k.wishes.push({name:n,cost:c}); renderAll(); } });
+  $('kids').addEventListener('click',e=>{ const t=e.target;
+    if(t.dataset.cash){ const k=S.kids.find(x=>x.id==t.dataset.cash); if(k.points<10){ $('km'+k.id).className='msg err'; $('km'+k.id).textContent='⚠ Needs at least 10 points.'; return; }
+      k.points-=10; H(12).bal-=10; log(`${k.name} cashed out 10 pts`,10,'out'); renderAll(); const w=wishProgress(k)[0]; $('km'+k.id).className='msg'; $('km'+k.id).textContent=`Cashed out $10.${w?` ${w.name} is now ${w.pct}% saved.`:''}`; }
+    if(t.dataset.top){ const [id,i]=t.dataset.top.split(':'),k=S.kids.find(x=>x.id==id); k.wishes.unshift(k.wishes.splice(+i,1)[0]); renderAll(); }
+    if(t.dataset.delwish){ const [id,i]=t.dataset.delwish.split(':'),k=S.kids.find(x=>x.id==id); k.wishes.splice(+i,1); renderAll(); } });
+  $('kids').addEventListener('change',e=>{ const t=e.target; if(t.dataset.weekly){ const k=S.kids.find(x=>x.id==t.dataset.weekly); k.weekly=Math.max(0,+t.value||0); renderAll(); } });
+  $('kidForm').addEventListener('submit',e=>{ e.preventDefault(); const n=$('kidName').value.trim(); if(!n){$('kidName').focus();return;} const w=$('kidWish').value.trim(),c=Math.max(1,+$('kidCost').value||1);
+    S.kids.push({id:Date.now(),name:n,points:0,weekly:5,wishes:w?[{name:w,cost:c}]:[]}); $('kidName').value=''; $('kidWish').value=''; renderAll(); });
+
+  $('ctaDemo').addEventListener('click',()=>{ $('demoForm').hidden=false; $('dName').focus(); });
+  $('ctaStart').addEventListener('click',()=>{ $('ctaMsg').className='msg'; $('ctaMsg').textContent='Sign-up opens when the card partner is live. Request a demo to get on the list.'; });
+  $('demoForm').addEventListener('submit',e=>{ e.preventDefault(); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('dEmail').value.trim())){ $('ctaMsg').className='msg err'; $('ctaMsg').textContent='⚠ Enter a valid email.'; return; }
+    $('demoForm').hidden=true; $('ctaMsg').className='msg ok'; $('ctaMsg').textContent='Demo request noted on this device. The form is not connected to email yet.'; });
+
+  let armed=false; $('reset').addEventListener('click',()=>{ if(!armed){armed=true;$('reset').textContent='Tap again to reset';setTimeout(()=>{armed=false;$('reset').textContent='Reset demo';},4000);return;} S=fresh(); armed=false; $('reset').textContent='Reset demo'; renderAll(); });
+
+  setInterval(()=>{ Object.keys(ASSETS).forEach(k=>{ const r=k==='USDC'?(1-PRICES[k])*.5+gauss()*.0001:gauss()*ASSETS[k].vol*.03; PRICES[k]=Math.max(.01,PRICES[k]*(1+r)); const d=HIST[k]['1D']; d.push(PRICES[k]); d.shift(); ['1W','1M','1Y'].forEach(g=>{HIST[k][g][HIST[k][g].length-1]=PRICES[k];}); });
+    renderStatus(); renderMatrix(); board('boardCrypto',tileCrypto,coreCrypto); drawCrypto(); if(!$('v-crypto').hidden){ renderCxList(); renderCxChart(); renderCxTrade(); } },4000);
+
+  const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) document.querySelectorAll('video').forEach(v=>{v.removeAttribute('autoplay');try{v.pause();}catch(e){}});
+
+  renderAll();
+})();
+</script>
+
+</body>
+</html>
