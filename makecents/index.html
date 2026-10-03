@@ -11,6 +11,7 @@
 <meta name="theme-color" content="#04060c">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d2ab3a' d='M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.9 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z'/%3E%3C/svg%3E">
 
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Belleza&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: Lorraen Madre header, full-frame orb video, the makeCENTS story (Three Kings), then five tabs.
@@ -506,14 +507,15 @@ input,select{border:0;background:rgba(255,255,255,.07)}
   <!-- ============ CTA ============ -->
   <section class="cta" aria-labelledby="ctaH">
     <div style="display:grid;gap:10px">
-      <span class="lbl">Own one</span>
-      <h2 id="ctaH">Want three Kings for your New Castle?</h2>
+      <span class="lbl">Founding Castle</span>
+      <h2 id="ctaH">Your own Home Economy, three Kings included.</h2>
       <p style="color:var(--g)">makeCENTS · Home economics for the Universal Family Office.</p>
       <p>I built this for my family first: twelve Houses, each with a cash line, a credit line and a crypto line, plus Capital Points for the kids. Now your household can run on it too.</p>
       <ul><li>12 Houses × 3 Kings: cash, credit and crypto on one board</li><li>King voice boxes that answer from your own numbers</li><li>House cards with limits, and every line of credit in one view</li><li>Capital Points and wish lists for your scouts</li></ul>
     </div>
     <div style="display:grid;gap:12px;align-content:center">
-      <div><span class="price num">$2</span> <span class="meta">/ month per family</span></div>
+      <div><span class="price num">$22</span> <span class="meta">one time · your own Home Economy</span></div>
+      <p class="meta" style="margin:0">Founding price. No monthly fee for this version.</p>
       <div class="pair"><button class="pill red" id="ctaStart">Start my New Castle</button><button class="pill blue" id="ctaDemo">Request a demo</button></div>
       <form class="row" id="demoForm" hidden>
         <div class="field"><label for="dName">Name</label><input id="dName" type="text" maxlength="40"></div>
@@ -880,7 +882,7 @@ input,select{border:0;background:rgba(255,255,255,.07)}
     S.kids.push({id:Date.now(),name:n,points:0,weekly:5,wishes:w?[{name:w,cost:c}]:[]}); $('kidName').value=''; $('kidWish').value=''; renderAll(); });
 
   $('ctaDemo').addEventListener('click',()=>{ $('demoForm').hidden=false; $('dName').focus(); });
-  $('ctaStart').addEventListener('click',()=>{ $('ctaMsg').className='msg'; $('ctaMsg').textContent='Sign-up opens when the card partner is live. Request a demo to get on the list.'; });
+  $('ctaStart').addEventListener('click',()=>{ $('ctaMsg').className='msg'; $('ctaMsg').textContent='Checkout opens soon. Request a demo to save your Founding Castle spot.'; });
   $('demoForm').addEventListener('submit',e=>{ e.preventDefault(); if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('dEmail').value.trim())){ $('ctaMsg').className='msg err'; $('ctaMsg').textContent='⚠ Enter a valid email.'; return; }
     $('demoForm').hidden=true; $('ctaMsg').className='msg ok'; $('ctaMsg').textContent='Demo request noted on this device. The form is not connected to email yet.'; });
 
